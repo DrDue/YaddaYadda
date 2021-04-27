@@ -31,6 +31,7 @@ module.exports = {
         
         bcrypt.hash(req.body.password, 10, function(error, hash) {
             let account = new Account({
+                username: req.body.username,
                 email: req.body.email,
                 password: hash,
                 firstname: req.body.firstname,

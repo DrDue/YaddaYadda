@@ -8,7 +8,7 @@ html
       ul
         li 
           a(href="/") Home
-        if !user || !admin  
+        if user == false && admin == false
           li 
             a(href="/createUser") Create user 
           li 
