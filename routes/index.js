@@ -46,6 +46,10 @@ router.post("/login", async function (req, res) {
   }
 });
 
+router.get("/awaiting", function (req, res, next) {
+  res.render("awaiting", { title: "Await" });
+});
+
 router.get("/logout", function (req, res) {
   user = false;
   admin = false;

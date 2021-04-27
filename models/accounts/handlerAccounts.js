@@ -38,6 +38,7 @@ module.exports = {
                 lastname: req.body.lastname,
                 rights: req.body.rights
             });
+            
             Account.create(account, function(error, savedDocument) {
                 if (error) 
                     console.log(error);
@@ -48,7 +49,7 @@ module.exports = {
     },
 
     verifyAccount: async function (req) {
-        debugger;
+
         let check = { email: req.body.email };
         let u = await module.exports.getAccount(check);
         // if (u[0].rights === 'awaiting') {
@@ -68,6 +69,7 @@ module.exports = {
                 user = true
                 }
         } else {
+            debugger;
             req.session.destroy(); //req.session = null;
         }
         return success;

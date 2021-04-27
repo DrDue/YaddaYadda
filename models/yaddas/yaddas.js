@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
-const accountsSchema = mongoose.Schema({
-    email: {type: String, unique: true},
-    password: String,
-    firstname: String, 
-    lastname: String,
+const yaddasSchema = mongoose.Schema({
     username: String,
-    rights: {type: String, enum: ["admin", "user", "awaiting"], default: "awaiting"},
-    avatar: {data: Buffer, MimeType: String}
+    avatar: {data: Buffer, MimeType: String},
+    yadda: String,
+    date: String,
+    time: String
 });
 
-module.exports = mongoose.model("Account", accountsSchema, 'accounts');
+module.exports = mongoose.model("yadda", yaddasSchema, 'yaddas');

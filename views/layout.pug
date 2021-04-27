@@ -13,7 +13,7 @@ html
             a(href="/createUser") Create user 
           li 
             a(href="/login") Login
-        if user || admin
+        if loggedin
           li
             a(href="/logout") Logout 
     block content
