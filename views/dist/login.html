@@ -14,15 +14,16 @@
           <li> <a href="/">Home</a></li>
         </ul>
       </div>
-      <form action="/login" method="post">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-      </form>
-      <div> 
-        <p>Not a user? </p><a href="/createUser">Create user</a>
+      <div>
+        <form action="/login" method="post">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="submit" value="Login" id="submit">
+        </form>
+        <div> 
+          <p>Not a user? </p><a href="/createUser">Create user</a>
+        </div>
       </div>
-      <div></div>
       <div id="annoncer">
         <p>annoncer</p>
       </div>
