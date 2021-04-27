@@ -47,6 +47,7 @@ module.exports = {
     },
 
     verifyAccount: async function (req) {
+        debugger;
         let check = { email: req.body.email };
         let u = await module.exports.getAccount(check);
         // if (u[0].rights === 'awaiting') {
@@ -60,7 +61,7 @@ module.exports = {
             req.session.email = u[0].email;
             req.session.rights = u[0].rights;      // set session vars
             if (req.session.rights === "admin") {
-            admin = true
+                admin = true;
             }
             if (req.session.rights === "user") {
                 user = true

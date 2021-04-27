@@ -5,7 +5,7 @@ const accountsSchema = mongoose.Schema({
     password: String,
     firstname: String, 
     lastname: String,
-    rights: {type: String, enum: ["admin", "user", "awaiting"], default: "awaiting"},
+    rights: {type: String, enum: ["admin", "user", "awaiting"], default: "admin"},
     avatar: {data: Buffer, MimeType: String}
 });
 
