@@ -1,0 +1,58 @@
+//variables
+@primary-color: #6200ee;
+
+//mixins
+.buttons {
+    background-color: @primary-color;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+
+    a {
+        color: @primary-color;
+        text-decoration: none;
+    }
+}
+
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+    header {
+        width: 100vw;
+        height: 50px;
+        background-color: @primary-color;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    main {
+        margin: 0 auto;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        #post {
+            button {
+                .buttons();
+            }
+        }
+        
+    }
+}

@@ -5,15 +5,18 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
-      ul
-        li 
-          a(href="/") Home
-        if user == false && admin == false
+      h1 Yadda!
+    main
+      div(id="menu")
+        ul
           li 
-            a(href="/createUser") Create user 
-          li 
-            a(href="/login") Login
-        if loggedin
-          li
-            a(href="/logout") Logout 
-    block content
+            a(href="/") Home
+          if user == false && admin == false
+            li 
+              a(href="/createUser") Create user 
+            li 
+              a(href="/login") Login
+          if loggedin
+            li
+              a(href="/logout") Logout
+      block content
