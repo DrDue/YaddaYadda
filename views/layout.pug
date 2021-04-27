@@ -11,12 +11,17 @@ html
         ul
           li 
             a(href="/") Home
-          if user == false && admin == false
+          if user === false && admin === false
             li 
               a(href="/createUser") Create user 
             li 
               a(href="/login") Login
-          if loggedin
+          if user || admin
             li
               a(href="/logout") Logout
-      block content
+      div
+        block content
+      
+      block sidebar
+        div(id="annoncer")
+          p annoncer

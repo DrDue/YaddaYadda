@@ -17,15 +17,6 @@
     box-sizing: border-box;
 }
 
-li {
-    list-style: none;
-
-    a {
-        color: @primary-color;
-        text-decoration: none;
-    }
-}
-
 body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
@@ -53,6 +44,19 @@ body {
                 .buttons();
             }
         }
-        
+
+    }
+    
+    ul {
+        padding: 0;
+    
+        li {
+            list-style: none;
+    
+            a {
+                color: @primary-color;
+                text-decoration: none;
+            }
+        }
     }
 }

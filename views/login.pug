@@ -1,14 +1,12 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to #{title}
-    h2 Login:
-    div
-        form(action="/login" method="post")
-            input(type="email" name="email" placeholder="Email" required)
-            input(type="password" name="password" placeholder="Password" required)
-            input(type="submit" value="Login")
-        div 
-            p Not a user? 
-            a(href="/createUser") Create user
+    form(action="/login" method="post")
+        input(type="email" name="email" placeholder="Email" required)
+        input(type="password" name="password" placeholder="Password" required)
+        input(type="submit" value="Login")
+    div 
+        p Not a user? 
+        a(href="/createUser") Create user
+    
+
