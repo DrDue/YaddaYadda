@@ -3,8 +3,17 @@ var router = express.Router();
 const account = require('../models/accounts/handlerAccounts');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+router.get("/", async function (req, res) {
+  let result = await account.getAccount({}, {});
+  if (!req.session.authenticated) {
+    res.redirect("/login");
+  } else {
+    res.render("index", {
+      title: "Awaiting users",
+      accounts: result,
+    });
+  }
 });
 
 router.get("/createUser", function (req, res, next) {
