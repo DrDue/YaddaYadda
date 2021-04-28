@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const account = require('../models/accounts/handlerAccounts');
 const yadda = require('../models/yaddas/handlerYaddas');
+const Yadda = require('../models/yaddas/yaddas');
 
 /* GET home page. */
 
@@ -68,11 +69,20 @@ router.get("/logout", function (req, res) {
   res.redirect("/login");
 });
 
+router.get("/index", async function (req, res, next) {
+  let result = await yadda.getYaddas(req);
+  res.render("index", { 
+    title: "Create a ned Yadda",
+    yadda: result, 
+  });
+  console.log(result);
+});
+
 router.post("/index", async function (req, res, next) {
   let result = await yadda.createYaddas(req);
   res.render("index", {
     title: "Create a new Yadda",
-    account: result,
+    yadda: result,
   });
 });
 
