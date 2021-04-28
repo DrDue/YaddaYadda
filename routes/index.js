@@ -72,7 +72,7 @@ router.get("/logout", function (req, res) {
 router.get("/index", async function (req, res, next) {
   let result = await yadda.getYaddas(req);
   res.render("index", { 
-    title: "Create a ned Yadda",
+    title: "Create a new Yadda",
     yadda: result, 
   });
   console.log(result);
