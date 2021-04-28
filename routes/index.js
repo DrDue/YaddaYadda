@@ -41,7 +41,7 @@ router.get("/login", function (req, res) {
 router.post("/login", async function (req, res) {
   // new user post route
   let rc = await account.verifyAccount(req); // verify credentials
-  if ((rc && req.session.rights === "user") || req.session.rights === "admin") {
+  if ((rc && req.session.rights === "user") || (rc && req.session.rights === "admin")) {
     res.render("index", {
       // find the view 'index'
       title: "Velkommen til Yadda", // input data to 'index'

@@ -52,10 +52,10 @@ module.exports = {
 
         let check = { email: req.body.email };
         let u = await module.exports.getAccount(check);
-        // if (u[0].rights === 'awaiting') {
-        //     req.session.destroy();
-        //     return false;
-        // }
+        if (u.length !== 1) {
+             req.session.destroy();
+             return false;
+        }
         console.log(u[0]);
         let success = await bcrypt.compare(req.body.password, u[0].password);
         if (success) {
