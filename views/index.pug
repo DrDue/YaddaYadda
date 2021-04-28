@@ -2,7 +2,8 @@ extends layout
 
 block content 
   div(id="post")
-    input(type="text" placeholder="Besked")
-    button yadda!
+    form(action="/index" method="post")
+      input(type="text" name="yadda" placeholder="Besked")
+      button yadda!
   div(id="timeline")
       

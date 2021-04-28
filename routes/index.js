@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const account = require('../models/accounts/handlerAccounts');
+const yadda = require('../models/yaddas/handlerYaddas');
 
 /* GET home page. */
 
@@ -65,6 +66,14 @@ router.get("/logout", function (req, res) {
   console.log(admin);
   req.session.destroy();
   res.redirect("/login");
+});
+
+router.post("/index", async function (req, res, next) {
+  let result = await yadda.createYaddas(req);
+  res.render("index", {
+    title: "Create a new Yadda",
+    account: result,
+  });
 });
 
 module.exports = router;
