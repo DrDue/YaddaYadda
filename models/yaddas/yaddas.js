@@ -8,4 +8,4 @@ const yaddasSchema = mongoose.Schema({
     time: String
 });
 
-module.exports = mongoose.model("yadda", yaddasSchema, 'yaddas');
+module.exports = mongoose.model("Yadda", yaddasSchema, 'yaddas');

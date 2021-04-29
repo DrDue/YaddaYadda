@@ -38,6 +38,7 @@ module.exports = {
         console.log("Connected to server by mongoose");
         });
         let result = await Yadda.find(query, null, sort);
+        console.log(result);
         return result;
     }
 };

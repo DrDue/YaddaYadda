@@ -42,12 +42,7 @@ router.post("/login", async function (req, res) {
   // new user post route
   let rc = await account.verifyAccount(req); // verify credentials
   if ((rc && req.session.rights === "user") || (rc && req.session.rights === "admin")) {
-    res.render("index", {
-      // find the view 'index'
-      title: "Velkommen til Yadda", // input data to 'index'
-      loggedin: true,
-      who: req.session.user, // using session var(s)
-    });
+    res.redirect("/");
   } else {
     res.render("login", {
       // find the view 'login'
@@ -64,18 +59,20 @@ router.get("/awaiting", function (req, res, next) {
 router.get("/logout", function (req, res) {
   user = false;
   admin = false;
-  console.log(admin);
+  // console.log(admin);
   req.session.destroy();
   res.redirect("/login");
 });
 
-router.get("/index", async function (req, res, next) {
-  let result = await yadda.getYaddas(req);
+router.get("/", async function (req, res, next) {
+  let check = {};
+  let result = await yadda.getYaddas({query: any});
+  console.log("result: " + result);
   res.render("index", { 
     title: "Create a new Yadda",
     yadda: result, 
   });
-  console.log(result);
+  
 });
 
 router.post("/index", async function (req, res, next) {
