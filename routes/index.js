@@ -6,16 +6,26 @@ const Yadda = require('../models/yaddas/yaddas');
 
 /* GET home page. */
 
-router.get("/", async function (req, res) {
-  let result = await account.getAccount({}, {});
+router.get("/", async function (req, res, next) {
   if (!req.session.authenticated) {
     res.redirect("/login");
   } else {
+    let check = {};
+    let result = await yadda.getYaddas(check, null);
+    console.log("result: " + result);
     res.render("index", {
-      title: "Awaiting users",
-      accounts: result,
+      title: "Create a new Yadda",
+      yaddas: result,
     });
   }
+});
+
+router.post("/", async function (req, res, next) {
+  let result = await yadda.createYaddas(req);
+  res.render("index", {
+    title: "Create a new Yadda",
+    yaddas: result,
+  });
 });
 
 router.get("/createUser", function (req, res, next) {
@@ -64,23 +74,6 @@ router.get("/logout", function (req, res) {
   res.redirect("/login");
 });
 
-router.get("/", async function (req, res, next) {
-  let check = {};
-  let result = await yadda.getYaddas({query: any});
-  console.log("result: " + result);
-  res.render("index", { 
-    title: "Create a new Yadda",
-    yadda: result, 
-  });
-  
-});
 
-router.post("/index", async function (req, res, next) {
-  let result = await yadda.createYaddas(req);
-  res.render("index", {
-    title: "Create a new Yadda",
-    yadda: result,
-  });
-});
 
 module.exports = router;
