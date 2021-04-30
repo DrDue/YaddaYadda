@@ -1,8 +1,8 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const account = require('../models/accounts/handlerAccounts');
-const yadda = require('../models/yaddas/handlerYaddas');
-const Yadda = require('../models/yaddas/yaddas');
+const account = require("../models/accounts/handlerAccounts");
+const yadda = require("../models/yaddas/handlerYaddas");
+const Yadda = require("../models/yaddas/yaddas");
 
 /* GET home page. */
 
@@ -51,7 +51,10 @@ router.get("/login", function (req, res) {
 router.post("/login", async function (req, res) {
   // new user post route
   let rc = await account.verifyAccount(req); // verify credentials
-  if ((rc && req.session.rights === "user") || (rc && req.session.rights === "admin")) {
+  if (
+    (rc && req.session.rights === "user") ||
+    (rc && req.session.rights === "admin")
+  ) {
     res.redirect("/");
   } else {
     res.render("login", {
@@ -73,7 +76,5 @@ router.get("/logout", function (req, res) {
   req.session.destroy();
   res.redirect("/login");
 });
-
-
 
 module.exports = router;
