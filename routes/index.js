@@ -22,6 +22,8 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   let result = await yadda.createYaddas(req);
+  let check = {};
+  let getYaddas = await yadda.getYaddas(check, null);
   res.render("index", {
     title: "Create a new Yadda",
     yaddas: result,
@@ -34,6 +36,7 @@ router.get("/createUser", function (req, res, next) {
 
 router.post("/createUser", async function (req, res, next) {
   let result = await account.createAccount(req);
+  console.log(req.body.email);
   res.render("createUser", {
     title: "Create a new user",
     account: result,
