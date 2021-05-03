@@ -7,4 +7,6 @@ block content
       button yadda!
   div(id="timeline")
     each yadda in yaddas
-      p #{yadda.yadda}
+      p #{yadda.username} #{yadda.yadda}
+      button
+        a(href="/replyYadda/" + yadda._id) Reply

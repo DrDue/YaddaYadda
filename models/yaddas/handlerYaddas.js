@@ -13,11 +13,9 @@ module.exports = {
         });
 
         let yadda = new Yadda({
-            username: req.body.username,
-            avatar: req.body.avatar,
+            username: req.session.email,
             yadda: req.body.yadda,
-            date: req.body.date,
-            time: req.body.time
+            replyTo: req.body.reply
         });
 
         Yadda.create(yadda, function (error, savedDocument) {

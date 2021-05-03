@@ -1,0 +1,9 @@
+extends layout
+
+block content
+     p #{yadda.username} #{yadda.yadda}
+     div(id="post")
+        form(action="/" method="post")
+            input(type="text" name="yadda" placeholder="Besked")
+            input(type="hidden" name="reply" value=yadda._id)
+            button yadda!

@@ -22,12 +22,7 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   let result = await yadda.createYaddas(req);
-  let check = {};
-  let getYaddas = await yadda.getYaddas(check, null);
-  res.render("index", {
-    title: "Create a new Yadda",
-    yaddas: getYaddas,
-  });
+  res.redirect("/");
 });
 
 router.get("/createUser", function (req, res, next) {
@@ -79,5 +74,14 @@ router.get("/logout", function (req, res) {
   req.session.destroy();
   res.redirect("/login");
 });
+
+router.get("/replyYadda/:yadda", async function (req, res) {
+  let check = {_id: req.params.yadda};
+  let oneYadda = await yadda.getYaddas(check);
+  res.render("replyYadda", {
+    title: "Reply",
+    yadda: oneYadda[0]
+  })
+})
 
 module.exports = router;
