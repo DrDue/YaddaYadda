@@ -26,7 +26,7 @@ router.post("/", async function (req, res, next) {
   let getYaddas = await yadda.getYaddas(check, null);
   res.render("index", {
     title: "Create a new Yadda",
-    yaddas: result,
+    yaddas: getYaddas,
   });
 });
 
