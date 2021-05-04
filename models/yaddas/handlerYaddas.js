@@ -13,7 +13,7 @@ module.exports = {
         });
         console.log("username: " + req.session.firstname)
         let yadda = new Yadda({
-            username: req.session.email,
+            username: req.session.username,
             yadda: req.body.yadda,
             replyTo: req.body.reply
         });

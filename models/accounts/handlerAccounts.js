@@ -62,6 +62,7 @@ module.exports = {
             req.session.authenticated = true;       // set session vars
             req.session.email = u[0].email;
             req.session.rights = u[0].rights;      // set session vars
+            req.session.username = u[0].username;
             if (req.session.rights === "admin") {
                 admin = true;
             }
