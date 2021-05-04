@@ -76,16 +76,20 @@ router.get("/logout", function (req, res) {
 });
 
 router.get("/replyYadda/:yadda", async function (req, res) {
-  let check = {_id: req.params.yadda};
-  let oneYadda = await yadda.getYaddas(check);
-  let check2 = {};
-  let result = await yadda.getYaddas(check2, null);
-  console.log("result: " + result);
-  res.render("replyYadda", {
-    title: "Reply",
-    oneYadda: oneYadda[0],
-    yaddas: result
-  })
+  if (!req.session.authenticated) {
+    res.redirect("/login");
+  } else {
+    let check = {_id: req.params.yadda};
+    let oneYadda = await yadda.getYaddas(check);
+    let check2 = {};
+    let result = await yadda.getYaddas(check2, null);
+    console.log("result: " + result);
+    res.render("replyYadda", {
+      title: "Reply",
+      oneYadda: oneYadda[0],
+      yaddas: result
+    })
+  }
 });
 
 router.post("/replyYadda/:yadda", async function (req, res, next) {

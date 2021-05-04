@@ -1,13 +1,13 @@
 extends layout
 
 block content
-
-     p #{oneYadda.username} #{oneYadda.yadda}
-     div(id="post")
+    p #{oneYadda.username} #{oneYadda.yadda}
+    div(id="post")
         form(action="/replyYadda/" + oneYadda._id method="post")
             input(type="text" name="yadda" placeholder="Besked")
             input(type="hidden" name="reply" value=oneYadda._id)
             button yadda!
+    div(id="timeline")
         each yadda in yaddas
             if `${oneYadda._id}` === `${yadda.replyTo}`
                 p #{yadda.username} #{yadda.yadda}

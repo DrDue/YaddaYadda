@@ -11,7 +11,7 @@ module.exports = {
         db.once("open", function () {
             console.log("Connected to server by mongoose");
         });
-
+        console.log("username: " + req.session.firstname)
         let yadda = new Yadda({
             username: req.session.email,
             yadda: req.body.yadda,
@@ -36,7 +36,7 @@ module.exports = {
         console.log("Connected to server by mongoose");
         });
         let result = await Yadda.find(query, null, sort);
-        console.log(result);
+        //console.log(result);
         return result;
     }
 };
