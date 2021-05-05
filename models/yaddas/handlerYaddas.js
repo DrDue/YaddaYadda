@@ -11,7 +11,6 @@ module.exports = {
         db.once("open", function () {
             console.log("Connected to server by mongoose");
         });
-        console.log("username: " + req.session.firstname)
         let yadda = new Yadda({
             username: req.session.username,
             yadda: req.body.yadda,

@@ -10,9 +10,9 @@ router.get("/", async function (req, res, next) {
   if (!req.session.authenticated) {
     res.redirect("/login");
   } else {
-    let check = {};
-    let result = await yadda.getYaddas(check, null);
-    console.log("result: " + result);
+    let check = {};                                   // var der i forvejen
+    let sort = {sort: {created: -1}}           // ny
+    let result = await yadda.getYaddas(check, sort); // skal bruge check og sort
     res.render("index", {
       title: "Create a new Yadda",
       yaddas: result,
