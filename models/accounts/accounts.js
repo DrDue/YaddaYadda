@@ -27,7 +27,7 @@ const accountsSchema = mongoose.Schema({
     rights: {
         type: String, 
         enum: ["admin", "user", "awaiting"], 
-        default: "awaiting"
+        default: "admin"
     },
     avatar: {
         data: Buffer, 

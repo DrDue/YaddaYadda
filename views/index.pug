@@ -10,5 +10,7 @@ block content
       if !yadda.replyTo 
         p #{yadda.username} #{yadda.yadda}
         p #{yadda.created}
+        p 
+          img(src='/users/getimage/' + yadda.username)
         button
           a(href="/replyYadda/" + yadda._id) Reply

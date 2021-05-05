@@ -30,12 +30,7 @@ router.get("/createUser", function (req, res, next) {
 });
 
 router.post("/createUser", async function (req, res, next) {
-  let result = await account.createAccount(req);
-  console.log(req.body.email);
-  res.render("createUser", {
-    title: "Create a new user",
-    account: result,
-  });
+  let result = await account.createAccount(req, res);
 });
 
 router.get("/login", function (req, res) {
@@ -98,5 +93,7 @@ router.post("/replyYadda/:yadda", async function (req, res, next) {
   let oneYadda = await yadda.getYaddas(check);
   res.redirect("/replyYadda/" + oneYadda[0]._id);
 });
+
+router.get('/getimage/:userid', account.lookupImage);
 
 module.exports = router;

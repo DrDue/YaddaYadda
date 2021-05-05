@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Account = require('./accounts');
 const bcrypt = require('bcrypt');
+const formidable = require('formidable');                       // required for image upload
+const fs = require('fs');                                       // required for reading temp image file
 //const { query } = require('express');
 //const { delete } = require('../../app');
 
@@ -19,7 +21,8 @@ module.exports = {
         return result;
     },
 
-    createAccount: async function(req) {
+    createAccount: async function(req, res) {
+        let form = new formidable.IncomingForm();
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
         const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -29,26 +32,54 @@ module.exports = {
         console.log("Connected to server by mongoose");
         });
         
-        bcrypt.hash(req.body.password, 10, function(error, hash) {
-            let account = new Account({
-                username: req.body.username,
-                email: req.body.email,
-                password: hash,
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
-                rights: req.body.rights
-            });
-            
-            Account.create(account, function(error, savedDocument) {
-                if (error) 
-                    console.log(error);
-                console.log(savedDocument);
-                db.close(); 
-            });
-        });
+        form.parse(req, async function(err, fields, files) {
+            if (err) { console.error(err); }
+      
+            let { email, password, firstname, lastname, username } = fields;
+            let errors = [];
+      
+            if (!firstname || !lastname || !username || !email || !password) {
+                errors.push({ msg: 'Please enter all fields' });
+            }
+            if (password.length < 32) {
+                errors.push({ msg: 'Password must be at least 32 characters' });
+            }
+            if (errors.length > 0) {            // respond if errors
+                res.render('createUser', {
+                    errors,
+                    firstname,
+                    lastname,
+                    username,
+                    email,
+                    password
+                });
+            }
+      
+            let user = await Account.findOne({ username: username });
+            if (user) {
+                errors.push({ msg: 'users already exists' });
+                res.render('createUser', {        // respond if already exists
+                    errors,
+                    firstname,
+                    lastname,
+                    username,
+                    email,
+                    password
+                });
+            }
+      
+      
+            let hash = await bcrypt.hash(password, 10);
+            let newUser = new Account({firstname: firstname, lastname: lastname, username: username, email: email, password: hash});
+            newUser.avatar.data = await fs.readFileSync(files.avatar.path);   // read uploaded image
+            newUser.avatar.MimeType = files.avatar.type;             // get its mimetype
+            await newUser.save();
+            req.flash('success_msg', 'You are now registered and can log in');
+            res.redirect('/login');
+          })
     },
 
-    verifyAccount: async function (req) {
+    verifyAccount: async function (req, res, next) {
 
         let check = { username: req.body.username };
         let u = await module.exports.getAccount(check);
@@ -116,5 +147,12 @@ module.exports = {
                 db.close();
             }
         );
+    },
+
+    lookupImage: async function (req, res) {
+        let query = {username: req.params.userid};
+        let user = await User.findOne(query);
+        res.contentType(user.avatar.MimeType);
+        res.send(user.avatar.data);
     }
 };
