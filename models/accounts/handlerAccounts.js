@@ -50,7 +50,7 @@ module.exports = {
 
     verifyAccount: async function (req) {
 
-        let check = { email: req.body.email };
+        let check = { username: req.body.username };
         let u = await module.exports.getAccount(check);
         if (u.length !== 1) {
              req.session.destroy();
