@@ -14,7 +14,8 @@ module.exports = {
         let yadda = new Yadda({
             username: req.session.username,
             yadda: req.body.yadda,
-            replyTo: req.body.reply
+            replyTo: req.body.reply,
+            created: req.body.created
         });
 
         Yadda.create(yadda, function (error, savedDocument) {

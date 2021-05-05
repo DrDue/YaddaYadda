@@ -11,5 +11,6 @@ block content
         p #{yadda.username} #{yadda.yadda}
         p #{yadda.created}
         p test
+//          img(src='/getimage/' + yadda.username)
         button
           a(href="/replyYadda/" + yadda._id) Reply

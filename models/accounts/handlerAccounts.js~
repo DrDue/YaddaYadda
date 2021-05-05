@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Account = require('./accounts');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const formidable = require('formidable');                       // required for image upload
 const fs = require('fs');                                       // required for reading temp image file
 //const { query } = require('express');
@@ -21,7 +21,7 @@ module.exports = {
         return result;
     },
 
-    createAccount: async function(req, res) {
+    createAccount: async function(req, res, next) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
         const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -35,14 +35,14 @@ module.exports = {
         form.parse(req, async function(err, fields, files) {
             if (err) { console.error(err); }
       
-            let { email, password, firstname, lastname, username } = fields;
+            let { username, firstname, lastname, email, password } = fields;            // rækkefølge ændret
             let errors = [];
       
             if (!firstname || !lastname || !username || !email || !password) {
                 errors.push({ msg: 'Please enter all fields' });
             }
-            if (password.length < 32) {
-                errors.push({ msg: 'Password must be at least 32 characters' });
+            if (password.length < 4) {
+                errors.push({ msg: 'Password must be at least 4 characters' });
             }
             if (errors.length > 0) {            // respond if errors
                 res.render('createUser', {
@@ -70,7 +70,7 @@ module.exports = {
       
       
             let hash = await bcrypt.hash(password, 10);
-            let newUser = new Account({firstname: firstname, lastname: lastname, username: username, email: email, password: hash});
+            let newUser = new Account({username: username, firstname: firstname, lastname: lastname, email: email, password: hash});
             newUser.avatar.data = await fs.readFileSync(files.avatar.path);   // read uploaded image
             newUser.avatar.MimeType = files.avatar.type;             // get its mimetype
             await newUser.save();
@@ -150,9 +150,15 @@ module.exports = {
     },
 
     lookupImage: async function (req, res) {
+        console.log(`nml: ${req.params.userid}`);
         let query = {username: req.params.userid};
-        let user = await User.findOne(query);
-        res.contentType(user.avatar.MimeType);
-        res.send(user.avatar.data);
+        let user = await Account.findOne(query);
+        if (user && user.avatar) {
+            res.contentType(user.avatar.MimeType);
+            res.send(user.avatar.data);
+        } else {
+            res.contentType('text/plain');
+            res.send('text');
+        }
     }
 };
