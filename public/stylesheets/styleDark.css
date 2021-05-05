@@ -1,0 +1,68 @@
+.buttons {
+    background-color: #03DAC6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
+  }
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  #submit {
+    background-color: #03DAC6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
+  }
+  body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #03DAC6;
+  }
+  body header {
+    width: 100vw;
+    height: 50px;
+    background-color: #03DAC6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body main {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 30px;
+    background-color: #292929;
+    min-height: 100vh;
+  }
+  body main #post button {
+    background-color: #03DAC6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
+  }
+  body ul {
+    padding: 0;
+  }
+  body ul li {
+    list-style: none;
+  }
+  body ul li a {
+    color: #03DAC6;
+    text-decoration: none;
+  }
+  /*#menu, #annoncer, #middle{
+  }
+  

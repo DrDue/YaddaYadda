@@ -9,5 +9,6 @@ block content
     each yadda in yaddas
       if !yadda.replyTo 
         p #{yadda.username} #{yadda.yadda}
+        p #{yadda.created}
         button
           a(href="/replyYadda/" + yadda._id) Reply
