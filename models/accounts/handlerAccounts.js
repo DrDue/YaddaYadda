@@ -3,7 +3,7 @@ const Account = require('./accounts');
 const bcrypt = require('bcryptjs');
 const formidable = require('formidable');                       // required for image upload
 const fs = require('fs');                                       // required for reading temp image file
-const config  = require('dotenv').config({path: '../../.env'}); //Can't find .env file right now.
+const config  = require('../../config/config'); //Can't find .env file right now.
 let jwt = require('jsonwebtoken');
 //const { query } = require('express');
 //const { delete } = require('../../app');
@@ -33,7 +33,7 @@ module.exports = {
         console.log("Connected to server by mongoose");
         });
         
-        //const token = jwt.sign({email: req.body.email}, config.secret);
+        const token = jwt.sign({email: req.body.email}, config.secret);
         let form = new formidable.IncomingForm();
         form.parse(req, async function(err, fields, files) {
             if (err) { console.error(err); }
