@@ -1,1 +1,0 @@
-// test js file - to check Git functions
