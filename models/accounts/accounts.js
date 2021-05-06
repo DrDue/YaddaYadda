@@ -37,6 +37,10 @@ const accountsSchema = mongoose.Schema({
         type: String, 
         enum: ["light", "dark"], 
         default: "light"
+    },
+    confirmationCode: {
+        type: String,
+        unique: true
     }
 });
 

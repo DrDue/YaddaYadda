@@ -3,7 +3,7 @@ const Account = require('./accounts');
 const bcrypt = require('bcryptjs');
 const formidable = require('formidable');                       // required for image upload
 const fs = require('fs');                                       // required for reading temp image file
-const config  = require('../../config/config'); //Can't find .env file right now.
+const config  = require('../../config/config');
 let jwt = require('jsonwebtoken');
 //const { query } = require('express');
 //const { delete } = require('../../app');
@@ -73,9 +73,17 @@ module.exports = {
       
       
             let hash = await bcrypt.hash(password, 10);
-            let newUser = new Account({username: username, firstname: firstname, lastname: lastname, email: email, password: hash});
+            let newUser = new Account({
+                username: username, 
+                firstname: firstname, 
+                lastname: lastname, 
+                email: email, 
+                password: hash
+            });
+            if (files.avatar.size > 0) {
             newUser.avatar.data = await fs.readFileSync(files.avatar.path);   // read uploaded image
             newUser.avatar.MimeType = files.avatar.type;             // get its mimetype
+            }
             await newUser.save();
             req.flash('success_msg', 'You are now registered and can log in');
             res.redirect('/login');
