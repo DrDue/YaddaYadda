@@ -10,7 +10,10 @@ block content
       if !yadda.replyTo 
         p #{yadda.username} #{yadda.yadda}
         p #{yadda.created}
-        p       
-          img(src='/getimage/' + yadda.username alt="missing image of " + yadda.username)
+        p
+          if yadda.avatar.MimeType !== "application/octet-stream"      
+            img(src='/getimage/' + yadda.username alt="missing image of " + yadda.username)
+          else
+            img(src="/images/x.png" alt="default image")
         button
           a(href="/replyYadda/" + yadda._id) Reply
