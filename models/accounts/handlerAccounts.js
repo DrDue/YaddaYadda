@@ -11,7 +11,7 @@ module.exports = {
     getAccount: async function(query, sort) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
-        const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
         await mongoose.connect(findDB, conparam);
         const db = mongoose.connection;
         db.once("open", function() {
@@ -24,7 +24,7 @@ module.exports = {
     createAccount: async function(req, res, next) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
-        const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
         await mongoose.connect(findDB, conparam);
         const db = mongoose.connection;
         db.once("open", function() {
@@ -87,7 +87,6 @@ module.exports = {
              req.session.destroy();
              return false;
         }
-        console.log(u[0]);
         let success = await bcrypt.compare(req.body.password, u[0].password);
         if (success) {
             req.session.authenticated = true;       // set session vars
@@ -110,7 +109,7 @@ module.exports = {
     approveAccount: async function(chk) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
-        const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
         await mongoose.connect(findDB, conparam);
         const db = mongoose.connection;
         db.once("open", function() {
@@ -131,7 +130,7 @@ module.exports = {
     declineAccount: async function(chk) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
-        const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
         await mongoose.connect(findDB, conparam);
         const db = mongoose.connection;
         db.once("open", function() {
@@ -150,9 +149,18 @@ module.exports = {
     },
 
     lookupImage: async function (req, res) {
+        const dbname = "yadda";         // databasen hedder yadda
+        const findDB = `mongodb://localhost:27017/${dbname}`;
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
+        await mongoose.connect(findDB, conparam);
+        const db = mongoose.connection;
+        db.once("open", function() {
+            console.log("Connected to server by mongoose");
+        });
+
         let query = {username: req.params.userid};
         let user = await Account.findOne(query);
-        if (user && user.avatar) {
+        if (user && user.avatar.data) {
             res.contentType(user.avatar.MimeType);
             res.send(user.avatar.data);
         } else {
