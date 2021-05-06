@@ -33,7 +33,7 @@ module.exports = {
         console.log("Connected to server by mongoose");
         });
         
-        const token = jwt.sign({email: req.body.email}, config.secret);
+        const token = jwt.sign({email: req.body.email}, config.secret); // Token for email verification
         let form = new formidable.IncomingForm();
         form.parse(req, async function(err, fields, files) {
             if (err) { console.error(err); }
@@ -71,7 +71,7 @@ module.exports = {
                 });
             }
       
-      
+            //Continue email verification here
             let hash = await bcrypt.hash(password, 10);
             let newUser = new Account({
                 username: username, 
