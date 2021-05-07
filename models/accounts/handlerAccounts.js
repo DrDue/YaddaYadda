@@ -5,6 +5,7 @@ const formidable = require('formidable');                       // required for 
 const fs = require('fs');                                       // required for reading temp image file
 const config  = require('../../config/config');
 let jwt = require('jsonwebtoken');
+const nodemailer = require('../../config/nodemailer');
 //const { query } = require('express');
 //const { delete } = require('../../app');
 
@@ -34,6 +35,7 @@ module.exports = {
         });
         
         const token = jwt.sign({email: req.body.email}, config.secret); // Token for email verification
+
         let form = new formidable.IncomingForm();
         form.parse(req, async function(err, fields, files) {
             if (err) { console.error(err); }
@@ -71,20 +73,27 @@ module.exports = {
                 });
             }
       
-            //Continue email verification here
+            
             let hash = await bcrypt.hash(password, 10);
             let newUser = new Account({
                 username: username, 
                 firstname: firstname, 
                 lastname: lastname, 
                 email: email, 
-                password: hash
+                password: hash,
+                confirmationCode: token //Email verification
             });
             if (files.avatar.size > 0) {
             newUser.avatar.data = await fs.readFileSync(files.avatar.path);   // read uploaded image
             newUser.avatar.MimeType = files.avatar.type;             // get its mimetype
             }
             await newUser.save();
+
+            nodemailer.sendConfirmationEmail( //Email verification
+                user.username,
+                user.email,
+                user.confirmationCode
+            );
             req.flash('success_msg', 'You are now registered and can log in');
             res.redirect('/login');
           })
@@ -104,6 +113,7 @@ module.exports = {
             req.session.email = u[0].email;
             req.session.rights = u[0].rights;      // set session vars
             req.session.username = u[0].username;
+            req.session.theme = u[0].theme;
             if (req.session.rights === "admin") {
                 admin = true;
             }
