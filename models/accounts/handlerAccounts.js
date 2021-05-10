@@ -5,7 +5,7 @@ const formidable = require('formidable');                       // required for 
 const fs = require('fs');                                       // required for reading temp image file
 const config  = require('../../config/config');
 let jwt = require('jsonwebtoken');
-const nodemailer = require('../../config/nodemailer');
+//const nodemailer = require('../../config/nodemailer');
 //const { query } = require('express');
 //const { delete } = require('../../app');
 
