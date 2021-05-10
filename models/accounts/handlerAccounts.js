@@ -89,11 +89,11 @@ module.exports = {
             }
             await newUser.save();
 
-            nodemailer.sendConfirmationEmail( //Email verification
-                user.username,
-                user.email,
-                user.confirmationCode
-            );
+            // nodemailer.sendConfirmationEmail( //Email verification
+            //     user.username,
+            //     user.email,
+            //     user.confirmationCode
+            // );
             req.flash('success_msg', 'You are now registered and can log in');
             res.redirect('/login');
           })

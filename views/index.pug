@@ -1,6 +1,6 @@
 extends layout
 
-block content 
+block content
   div(id="post")
     form(action="/" method="post")
       input(type="text" name="yadda" placeholder="Besked")
@@ -8,12 +8,13 @@ block content
   div(id="timeline")
     each yadda in yaddas
       if !yadda.replyTo 
-        p #{yadda.username} #{yadda.yadda}
+        a(href="/profiles/" + yadda.username) #{yadda.username}
+        p #{yadda.yadda}
         p #{yadda.created}
-        p
-          if yadda.avatar.MimeType !== "application/octet-stream"      
-            img(src='/getimage/' + yadda.username alt="missing image of " + yadda.username)
-          else
+        p hejdfhkjgh #{yadda.avatar.data}
+          if !yadda.avatar.type
             img(src="/images/x.png" alt="default image")
+          else
+            img(src='/getimage/' + yadda.username alt="missing image of " + yadda.username)
         button
           a(href="/replyYadda/" + yadda._id) Reply

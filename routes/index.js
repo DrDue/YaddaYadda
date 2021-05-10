@@ -94,6 +94,24 @@ router.post("/replyYadda/:yadda", async function (req, res, next) {
   res.redirect("/replyYadda/" + oneYadda[0]._id);
 });
 
+// Router to check profiles
+router.get("/profiles/:username", async function (req, res) {
+  if (!req.session.authenticated) {
+    res.redirect("/login");
+  } else {
+    let check = {username: req.params.yadda};
+    let oneYadda = await yadda.getYaddas(check);
+    let check2 = {};
+    let result = await yadda.getYaddas(check2, null);
+    console.log("result: " + result);
+    res.render("profiles", {
+      title: "Reply",
+      oneYadda: oneYadda[0],
+      yaddas: result
+    })
+  }
+});
+
 router.get('/getimage/:userid', account.lookupImage);
 
 module.exports = router;
