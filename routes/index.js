@@ -106,7 +106,7 @@ router.get("/profiles/:username", async function (req, res) {
     let currentUser = req.session.username
     console.log(req.session.username);
     res.render("profiles", {
-      title: "Reply",
+      title: "Profile",
       user: user[0],
       currentUser: currentUser
     })
