@@ -109,16 +109,28 @@ router.get("/profiles/:username", async function (req, res) {
     let check = {username: req.params.username};
     let user = await account.getAccount(check);
     console.log(check);;
-    let currentUser = req.session.username
-    let theme = req.session.theme
+    let currentUser = req.session;
+    let currentTheme = currentUser.theme
+    let theme = req.session.theme;
     console.log(req.session.username);
     res.render("profiles", {
       title: "Profile",
       user: user[0],
       currentUser: currentUser,
       theme: theme,
+      currentTheme: currentTheme
     })
   }
+});
+
+router.get("/changelight/:id", async function (req, res) {
+  let result = await account.changeLight({username: req.params.id}, {});
+  res.redirect("/profiles/" + req.session.username);  
+});
+
+router.get("/changedark/:id", async function (req, res) {
+  let result = await account.changeDark({username: req.params.id}, {});
+  res.redirect("/profiles/" + req.session.username);  
 });
 
 router.get('/getimage/:userid', account.lookupImage);

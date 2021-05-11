@@ -2,10 +2,13 @@ doctype html
 html
   head
     title= title
-    if theme === "dark"
-      link(rel='stylesheet', href='/stylesheets/styleDark.css')
+    if currentUser
+      if user.theme === "dark"
+        link(rel='stylesheet', href='/stylesheets/styleDark.css')
+      else
+        link(rel='stylesheet', href='/stylesheets/style.css')
     else
-      link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
       h1 Yadda!

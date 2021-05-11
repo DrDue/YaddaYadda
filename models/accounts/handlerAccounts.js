@@ -152,27 +152,6 @@ module.exports = {
         );
     },
 
-    declineAccount: async function(chk) {
-        const dbname = "yadda";         // databasen hedder yadda
-        const findDB = `mongodb://localhost:27017/${dbname}`;
-        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
-        await mongoose.connect(findDB, conparam);
-        const db = mongoose.connection;
-        db.once("open", function() {
-            console.log("Connected to server by mongoose");
-        });
-
-        Account.updateOne(chk,
-            { $set: {rights: 'awaiting'}},
-            function(error, savedDocument) {
-                if (error)
-                    console.log(error);
-                console.log(savedDocument);
-                db.close();
-            }
-        );
-    },
-
     lookupImage: async function (req, res) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
@@ -194,7 +173,7 @@ module.exports = {
         }
     },
 
-    themeFunc: async function (req, res) {
+    changeLight: async function(chk) {
         const dbname = "yadda";         // databasen hedder yadda
         const findDB = `mongodb://localhost:27017/${dbname}`;
         const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
@@ -203,10 +182,34 @@ module.exports = {
         db.once("open", function() {
             console.log("Connected to server by mongoose");
         });
-        if (this.checked) {
-            reg.session.theme = "dark";    
-        } else {
-            reg.session.theme = "light";
-        }
+        Account.updateOne(chk,
+        { $set: {theme: 'light'}},
+        function(error, savedDocument) {
+            if (error)
+                console.log(error);
+            console.log(savedDocument);
+            db.close();
+            }  
+        );   
+    },
+
+    changeDark: async function(chk) {
+        const dbname = "yadda";         // databasen hedder yadda
+        const findDB = `mongodb://localhost:27017/${dbname}`;
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
+        await mongoose.connect(findDB, conparam);
+        const db = mongoose.connection;
+        db.once("open", function() {
+            console.log("Connected to server by mongoose");
+        });
+        Account.updateOne(chk,
+        { $set: {theme: 'dark'}},
+        function(error, savedDocument) {
+            if (error)
+                console.log(error);
+            console.log(savedDocument);
+            db.close();
+            }  
+        );   
     }
 };

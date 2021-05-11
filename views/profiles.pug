@@ -2,16 +2,24 @@ extends layout
 
 block content
     //if user.username !== currentUser
-    p #{user.username} hello #{currentUser}
+    p #{user.username} User 
+    p #{currentUser.username} Current User
     p #{user._id}
-    p #{user.theme}
-    
-    label(class="switch")
-        if user.theme === "light"
-            input(type="checkbox" id="themeButton")
+    p #{user.theme} user theme
+    p #{currentTheme} current
+    if user.username === currentUser.username
+        if user.theme === "dark"
+            a(href="/changelight/" + currentUser.username) click here
         else
-            input(type="checkbox" id="themeButton" checked)
-        span(class="slider round")
+            a(href="/changedark/" + currentUser.username) click here
+    //- label(class="switch")
+    //-     if user.theme === "light"
+    //-         a(href="/changeTheme/" + currentUser.email)
+    //-             input(type="checkbox" id="themeButton")
+    //-     else
+    //-         a(href="/changeTheme/" + currentUser.email)
+    //-             input(type="checkbox" id="themeButton" checked)
+    //-     span(class="slider round")
     img(src='/getimage/' + user.username alt="missing image of " + user.username)
     script
         //include ../public/javascripts/script.js
