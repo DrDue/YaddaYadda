@@ -118,7 +118,7 @@ module.exports = {
                 admin = true;
             }
             if (req.session.rights === "user") {
-                user = true
+                user = true;
             }
         } else {
             if (req.session.rights === "awaiting") {
@@ -191,6 +191,22 @@ module.exports = {
         } else {
             res.contentType('text/plain');
             res.send('text');
+        }
+    },
+
+    themeFunc: async function (req, res) {
+        const dbname = "yadda";         // databasen hedder yadda
+        const findDB = `mongodb://localhost:27017/${dbname}`;
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
+        await mongoose.connect(findDB, conparam);
+        const db = mongoose.connection;
+        db.once("open", function() {
+            console.log("Connected to server by mongoose");
+        });
+        if (this.checked) {
+            reg.session.theme = "dark";    
+        } else {
+            reg.session.theme = "light";
         }
     }
 };
