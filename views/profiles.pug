@@ -1,3 +1,8 @@
 extends layout
 
-block content 
+block content
+    if user.username !== currentUser
+        p #{user.username} hello #{currentUser}
+        p #{user._id}
+        p #{user.theme}
+        img(src='/getimage/' + user.username alt="missing image of " + user.username)

@@ -75,6 +75,7 @@ router.get("/replyYadda/:yadda", async function (req, res) {
     res.redirect("/login");
   } else {
     let check = {_id: req.params.yadda};
+    console.log(check)
     let oneYadda = await yadda.getYaddas(check);
     let check2 = {};
     let result = await yadda.getYaddas(check2, null);
@@ -99,15 +100,15 @@ router.get("/profiles/:username", async function (req, res) {
   if (!req.session.authenticated) {
     res.redirect("/login");
   } else {
-    let check = {username: req.params.yadda};
-    let oneYadda = await yadda.getYaddas(check);
-    let check2 = {};
-    let result = await yadda.getYaddas(check2, null);
-    console.log("result: " + result);
+    let check = {username: req.params.username};
+    let user = await account.getAccount(check);
+    console.log(check);
+    let currentUser = req.session.username
+    console.log(req.session.username);
     res.render("profiles", {
       title: "Reply",
-      oneYadda: oneYadda[0],
-      yaddas: result
+      user: user[0],
+      currentUser: currentUser
     })
   }
 });
