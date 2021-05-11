@@ -70,6 +70,8 @@ router.get("/logout", function (req, res) {
   res.redirect("/login");
 });
 
+
+// reply yadda router
 router.get("/replyYadda/:yadda", async function (req, res) {
   if (!req.session.authenticated) {
     res.redirect("/login");
