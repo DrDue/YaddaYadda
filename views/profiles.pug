@@ -8,18 +8,22 @@ block content
     p #{user.theme} user theme
     p #{currentTheme} current
     if user.username === currentUser.username
-        if user.theme === "dark"
-            a(href="/changelight/" + currentUser.username) click here
-        else
-            a(href="/changedark/" + currentUser.username) click here
-    //- label(class="switch")
-    //-     if user.theme === "light"
-    //-         a(href="/changeTheme/" + currentUser.email)
-    //-             input(type="checkbox" id="themeButton")
-    //-     else
-    //-         a(href="/changeTheme/" + currentUser.email)
-    //-             input(type="checkbox" id="themeButton" checked)
-    //-     span(class="slider round")
+      if user.theme === "dark"
+        a(href="/changelight/" + currentUser.username) click here
+      else
+        a(href="/changedark/" + currentUser.username) click here
+
+    if user.theme === "light"
+      a(href="/changeDark/" + currentUser.username)
+        label(class="switch")
+          input(type="checkbox" id="themeButton" href="/changeDark/")
+          span(class="slider round")
+    else 
+      a(href="/changeLight/" + currentUser.username)
+        label(class="switch")
+          input(type="checkbox" id="themeButton" checked)
+          span(class="slider round")
+
     img(src='/getimage/' + user.username alt="missing image of " + user.username)
     .tab
         button.tablinks(onclick="followTabs(event, 'Followers')") Followers

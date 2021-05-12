@@ -2,19 +2,22 @@ extends layout
 
 block content
   div(id="post")
+    a(href="/profiles/" + currentUser.username)
+      img(src='/getimage/' + currentUser.username alt="missing image of " + currentUser.username)
     form(action="/" method="post")
-      input(type="text" name="yadda" placeholder="Besked")
+      input(type="text" name="yadda" placeholder=`${currentUser.username}'s besked`)
       button yadda!
   div(id="timeline")
     each yadda in yaddas
-      if !yadda.replyTo 
-        a(href="/profiles/" + yadda.username) #{yadda.username}
-        p #{yadda.yadda}
-        p #{yadda.created}
-        p hejdfhkjgh #{yadda.avatar.data}
-          if !yadda.avatar.type
-            img(src="/images/x.png" alt="default image")
-          else
-            img(src='/getimage/' + yadda.username alt="missing image of " + yadda.username)
-        button
-          a(href="/replyYadda/" + yadda._id) Reply
+      if !yadda.replyTo
+        div(id="yadda")
+          a(href="/profiles/" + yadda.username)
+            img(src='/getimage/' + yadda.username alt=yadda.username + " has no picture")
+          div(id="yaddaText")
+            div(id="username")
+              a(href="/profiles/" + yadda.username) #{yadda.username}
+              p #{yadda.created}
+            p #{yadda.yadda}
+            button
+              a(href="/replyYadda/" + yadda._id) Reply
+        

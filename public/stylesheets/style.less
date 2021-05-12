@@ -1,161 +1,263 @@
 //variables
 @primary-color: #6200ee;
+@background-color: white;
+@primary-hover: lighten(@primary-color, 10%);
 
 //mixins
 .buttons {
-    background-color: @primary-color;
+  background-color: @primary-color;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+
+  &:hover {
+    background-color: @primary-hover;
+  }
+
+  a {
     color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    border: none;
-    font-size: 15px;
-    font-weight: 800;
+  }
 }
 
 * {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 #submit {
-    .buttons();
+  .buttons();
 }
 
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: @background-color;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
-    header {
-        width: 100vw;
-        height: 50px;
-        background-color: @primary-color;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 30px;
-    }
+  header {
+    width: 100vw;
+    height: 50px;
+    background-color: @primary-color;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
 
-    main {
-        margin: 0 auto;
-        width: 70%;
+  main {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    #post {
+      width: 100%;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        height: 60px;
+        width: 60px;
+        margin-right: 20px;
+        border-radius: 50%;
+        border: 2px solid @primary-color;
+      }
+
+      form {
+        width: 100%;
+        height: 30px;
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
 
-        #post {
-            button {
-                .buttons();
-            }
+        input {
+          width: 90%;
+          border-radius: 7px 0px 0px 7px;
+          border: 1px solid grey;
+
+          &[type="text"] {
+            padding-left: 10px;
+          }
         }
+
+        button {
+          .buttons();
+          border-radius: 0px 7px 7px 0px;
+        }
+      }
 
     }
 
-    ul {
-        padding: 0;
-    
-        li {
-            list-style: none; 
-    
+    #timeline {
+      #yadda {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 20px;
+
+        img {
+          border: 1px solid @primary-color;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          margin-right: 20px;
+          object-fit: cover;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: @primary-color;
+        }
+
+        #yaddaText {
+
+          #username {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 300px;
+            margin-bottom: 10px;
+
             a {
-                color: @primary-color;
-                text-decoration: none;
-            }
-        }
-    }
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-      }
-      
-      .switch input { 
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-      }
-      
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-      }
-      
-      input:checked + .slider {
-        background-color: #2196F3;
-      }
-      
-      input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-      }
-      
-      input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-      }
-      
-      /* Rounded sliders */
-      .slider.round {
-        border-radius: 34px;
-      }
-      
-      .slider.round:before {
-        border-radius: 50%;
-      }
+              color: @primary-color;
+              margin-right: 10px;
+              font-weight: 700;
 
-      .tab {
-        overflow: hidden;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
+              &:hover {
+                color: @primary-hover
+              }
+            }
+          }
+
+          p {
+            max-width: 300px;
+          }
+
+          button {
+            margin-top: 10px;
+            .buttons();
+          }
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
     }
-    
-    /* Style the buttons inside the tab */
-    .tab button {
-        background-color: inherit;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        transition: 0.3s;
-        font-size: 17px;
+
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style: none;
+
+      a {
+        color: @primary-color;
+        text-decoration: none;
+      }
     }
-    
-    /* Change background color of buttons on hover */
-    .tab button:hover {
-        background-color: #ddd;
-    }
-    
-    /* Create an active/current tablink class */
-    .tab button.active {
-        background-color: #ccc;
-    }
-    
-    /* Style the tab content */
-    .tabcontent {
-        display: none;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-top: none;
-    }
-    
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
+
+  input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
 }

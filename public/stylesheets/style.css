@@ -7,6 +7,12 @@
   font-size: 15px;
   font-weight: 800;
 }
+.buttons:hover {
+  background-color: #7d22ff;
+}
+.buttons a {
+  color: white;
+}
 * {
   margin: 0;
   box-sizing: border-box;
@@ -20,7 +26,14 @@
   font-size: 15px;
   font-weight: 800;
 }
+#submit:hover {
+  background-color: #7d22ff;
+}
+#submit a {
+  color: white;
+}
 body {
+  background-color: white;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /* Rounded sliders */
   /* Style the buttons inside the tab */
@@ -45,7 +58,35 @@ body main {
   flex-direction: row;
   justify-content: space-between;
 }
-body main #post button {
+body main #post {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body main #post img {
+  height: 60px;
+  width: 60px;
+  margin-right: 20px;
+  border-radius: 50%;
+  border: 2px solid #6200ee;
+}
+body main #post form {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+body main #post form input {
+  width: 90%;
+  border-radius: 7px 0px 0px 7px;
+  border: 1px solid grey;
+}
+body main #post form input[type="text"] {
+  padding-left: 10px;
+}
+body main #post form button {
   background-color: #6200ee;
   color: white;
   padding: 5px 10px;
@@ -53,6 +94,69 @@ body main #post button {
   border: none;
   font-size: 15px;
   font-weight: 800;
+  border-radius: 0px 7px 7px 0px;
+}
+body main #post form button:hover {
+  background-color: #7d22ff;
+}
+body main #post form button a {
+  color: white;
+}
+body main #timeline #yadda {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+body main #timeline #yadda img {
+  border: 1px solid #6200ee;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6200ee;
+}
+body main #timeline #yadda #yaddaText #username {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 10px;
+}
+body main #timeline #yadda #yaddaText #username a {
+  color: #6200ee;
+  margin-right: 10px;
+  font-weight: 700;
+}
+body main #timeline #yadda #yaddaText #username a:hover {
+  color: #7d22ff;
+}
+body main #timeline #yadda #yaddaText p {
+  max-width: 300px;
+}
+body main #timeline #yadda #yaddaText button {
+  margin-top: 10px;
+  background-color: #6200ee;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+}
+body main #timeline #yadda #yaddaText button:hover {
+  background-color: #7d22ff;
+}
+body main #timeline #yadda #yaddaText button a {
+  color: white;
+}
+body main #timeline #yadda a {
+  text-decoration: none;
 }
 body ul {
   padding: 0;

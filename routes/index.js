@@ -21,6 +21,7 @@ router.get("/", async function (req, res, next) {
       title: "Create a new Yadda",
       yaddas: result,
       theme: theme,
+      currentUser: currentUser[0],
       currentTheme: currentTheme
     });
   }
