@@ -23,6 +23,10 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /* Rounded sliders */
+  /* Style the buttons inside the tab */
+  /* Change background color of buttons on hover */
+  /* Create an active/current tablink class */
+  /* Style the tab content */
 }
 body header {
   width: 100vw;
@@ -109,4 +113,31 @@ body .slider.round {
 }
 body .slider.round:before {
   border-radius: 50%;
+}
+body .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+body .tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+body .tab button:hover {
+  background-color: #ddd;
+}
+body .tab button.active {
+  background-color: #ccc;
+}
+body .tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
