@@ -21,5 +21,14 @@ block content
     //-             input(type="checkbox" id="themeButton" checked)
     //-     span(class="slider round")
     img(src='/getimage/' + user.username alt="missing image of " + user.username)
+    .tab
+        button.tablinks(onclick="followTabs(event, 'Followers')") Followers
+        button.tablinks(onclick="followTabs(event, 'Following')") Following
+          #Followers.tabcontent
+            h3 Followers
+            p Ost
+          #Following.tabcontent
+            h3 Following
+            p Even bigger ost
     script
         //include ../public/javascripts/script.js
