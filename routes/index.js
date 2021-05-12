@@ -108,15 +108,18 @@ router.get("/profiles/:username", async function (req, res) {
   } else {
     let check = {username: req.params.username};
     let user = await account.getAccount(check);
-    console.log(check);;
-    let currentUser = req.session;
-    let currentTheme = currentUser.theme
+    let check2 = {username: req.session.username};
+    let currentUser = await account.getAccount(check2);
+    console.log(check);
+    let currentTheme = currentUser[0].theme;
     let theme = req.session.theme;
     console.log(req.session.username);
+    console.log("session theme: " + req.session.theme);
+    console.log("theme: " + currentTheme);
     res.render("profiles", {
       title: "Profile",
       user: user[0],
-      currentUser: currentUser,
+      currentUser: currentUser[0],
       theme: theme,
       currentTheme: currentTheme
     })
