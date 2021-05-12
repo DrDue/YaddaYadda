@@ -14,10 +14,14 @@ router.get("/", async function (req, res, next) {
     let sort = {sort: {created: -1}}           // ny
     let result = await yadda.getYaddas(check, sort); // skal bruge check og sort
     let theme = req.session.theme;
+    let check2 = {username: req.session.username};
+    let currentUser = await account.getAccount(check2);
+    let currentTheme = currentUser[0].theme;
     res.render("index", {
       title: "Create a new Yadda",
       yaddas: result,
-      theme: theme
+      theme: theme,
+      currentTheme: currentTheme
     });
   }
 });
@@ -83,13 +87,15 @@ router.get("/replyYadda/:yadda", async function (req, res) {
     let oneYadda = await yadda.getYaddas(check);
     let check2 = {};
     let result = await yadda.getYaddas(check2, null);
-    let theme = req.session.theme
+    let check3 = {username: req.session.username};
+    let currentUser = await account.getAccount(check3);
+    let currentTheme = currentUser[0].theme;
     console.log("result: " + result);
     res.render("replyYadda", {
       title: "Reply",
       oneYadda: oneYadda[0],
       yaddas: result,
-      theme: theme
+      currentTheme: currentTheme
     })
   }
 });

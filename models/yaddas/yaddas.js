@@ -21,6 +21,9 @@ const yaddasSchema = mongoose.Schema({
     replyTo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Yadda"
+    },
+    tag: {
+        type: String,
     }
 });
 
