@@ -12,14 +12,14 @@ block content
             a(href="/changelight/" + currentUser.username) click here
         else
             a(href="/changedark/" + currentUser.username) click here
-    //- label(class="switch")
-    //-     if user.theme === "light"
-    //-         a(href="/changeTheme/" + currentUser.email)
-    //-             input(type="checkbox" id="themeButton")
-    //-     else
-    //-         a(href="/changeTheme/" + currentUser.email)
-    //-             input(type="checkbox" id="themeButton" checked)
-    //-     span(class="slider round")
+        label(class="switch")
+         if currentTheme === "light"
+             a(href="/changeDark/" + currentUser.email)
+                 input(type="checkbox" id="themeButton")
+         else
+             a(href="/changeLight/" + currentUser.email)
+                 input(type="checkbox" id="themeButton" checked)
+         span(class="slider round")
     img(src='/getimage/' + user.username alt="missing image of " + user.username)
     .tab
         button.tablinks(onclick="followTabs(event, 'Followers')") Followers
@@ -31,4 +31,4 @@ block content
             h3 Following
             p Even bigger ost
     script
-        //include ../public/javascripts/script.js
+        include ../public/javascripts/script.js
