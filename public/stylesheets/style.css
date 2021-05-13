@@ -36,10 +36,6 @@ body {
   background-color: white;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /* Rounded sliders */
-  /* Style the buttons inside the tab */
-  /* Change background color of buttons on hover */
-  /* Create an active/current tablink class */
-  /* Style the tab content */
 }
 body header {
   width: 100vw;
@@ -158,6 +154,55 @@ body main #timeline #yadda #yaddaText button a {
 body main #timeline #yadda a {
   text-decoration: none;
 }
+body main #profile #info {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+body main #profile #info #user p {
+  font-size: 18px;
+}
+body main #profile #info #user p:nth-child(odd) {
+  font-weight: 600;
+  color: #6200ee;
+}
+body main #profile #info #user p:nth-child(even) {
+  margin-bottom: 10px;
+}
+body main #profile #info #user #theme .switch a {
+  height: 100%;
+  display: block;
+}
+body main #profile #info img {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+body main #profile #tabs-container #tabs-bar .tablink {
+  width: 50%;
+  height: 40px;
+  border: none;
+  border-top: 1px solid black;
+  font-size: 24px;
+  font-weight: 500;
+}
+body main #profile #tabs-container #tabs-bar .tablink:first-child {
+  border-radius: 10px 0 0 0;
+  border-left: 1px solid black;
+}
+body main #profile #tabs-container #tabs-bar .tablink:nth-child(2) {
+  border-radius: 0 10px 0 0;
+  border-right: 1px solid black;
+}
+body main #profile #tabs-container #tabs-bar .tabButton-active {
+  background-color: #6200ee;
+  color: white;
+}
+body main #profile #tabs-container .tab-content {
+  border: 1px solid black;
+}
 body ul {
   padding: 0;
 }
@@ -202,7 +247,7 @@ body .slider:before {
   transition: 0.4s;
 }
 body input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #6200ee;
 }
 body input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
@@ -217,31 +262,4 @@ body .slider.round {
 }
 body .slider.round:before {
   border-radius: 50%;
-}
-body .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-body .tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-body .tab button:hover {
-  background-color: #ddd;
-}
-body .tab button.active {
-  background-color: #ccc;
-}
-body .tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
 }

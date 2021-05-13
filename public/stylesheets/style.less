@@ -149,6 +149,84 @@ body {
       }
     }
 
+    #profile {
+
+      #info {
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        #user {
+
+          p {
+            font-size: 18px;
+
+            &:nth-child(odd) {
+              font-weight: 600;
+              color: @primary-color;
+            }
+
+            &:nth-child(even) {
+              margin-bottom: 10px;
+            }
+          }
+
+          #theme {
+
+            .switch {
+
+              a {
+                height: 100%;
+                display: block;
+              }
+            }
+
+          }
+        }
+
+        img {
+          border-radius: 50%;
+          height: 200px;
+          width: 200px;
+        }
+      }
+
+      #tabs-container {
+        #tabs-bar {
+
+          .tablink {
+            width: 50%;
+            height: 40px;
+            border: none;
+            border-top: 1px solid black;
+            font-size: 24px;
+            font-weight: 500;
+
+            &:first-child {
+              border-radius: 10px 0 0 0;
+              border-left: 1px solid black;
+            }
+
+            &:nth-child(2) {
+              border-radius: 0 10px 0 0;
+              border-right: 1px solid black;
+            }
+          }
+
+          .tabButton-active {
+            background-color: @primary-color;
+            color: white;
+          }
+        }
+
+        .tab-content {
+          border: 1px solid black;
+        }
+      }
+    }
+
   }
 
   ul {
@@ -202,7 +280,7 @@ body {
   }
 
   input:checked+.slider {
-    background-color: #2196F3;
+    background-color: @primary-color;
   }
 
   input:focus+.slider {
@@ -223,41 +301,4 @@ body {
   .slider.round:before {
     border-radius: 50%;
   }
-
-  .tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-  }
-
-  /* Style the buttons inside the tab */
-  .tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-  }
-
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: #ddd;
-  }
-
-  /* Create an active/current tablink class */
-  .tab button.active {
-    background-color: #ccc;
-  }
-
-  /* Style the tab content */
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-
 }

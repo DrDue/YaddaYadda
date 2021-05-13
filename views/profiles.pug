@@ -1,38 +1,43 @@
 extends layout
 
 block content
-    //if user.username !== currentUser
-    p #{user.username} User 
-    p #{currentUser.username} Current User
-    p #{user._id}
-    p #{user.theme} user theme
-    p #{currentTheme} current
-    if user.username === currentUser.username
-      if user.theme === "dark"
-        a(href="/changelight/" + currentUser.username) click here
-      else
-        a(href="/changedark/" + currentUser.username) click here
+  if user.username === currentUser.username
+    div(id="profile")
+      div(id="info")
+        div(id="user")
+          p Username: 
+          p #{currentUser.username}
+          p First Name:
+          p #{currentUser.firstname}
+          p Last Name:
+          p #{currentUser.lastname}
+          p Email:
+          p #{currentUser.email}
+          div(id="theme")
+            p Enable dark mode:
+            //- if user.theme === "dark"
+            //-   a(href="/changelight/" + currentUser.username) click here
+            //- else
+            //-   a(href="/changedark/" + currentUser.username) click here
+            label(class="switch")
+              if user.theme === "light"
+                a(href="/changeDark/" + currentUser.username)
+                  input(type="checkbox" id="themeButton" href="/changeDark/")
+                  span(class="slider round")
+              else 
+                a(href="/changeLight/" + currentUser.username)
+                  input(type="checkbox" id="themeButton" checked)
+                  span(class="slider round")
 
-    if user.theme === "light"
-      a(href="/changeDark/" + currentUser.username)
-        label(class="switch")
-          input(type="checkbox" id="themeButton" href="/changeDark/")
-          span(class="slider round")
-    else 
-      a(href="/changeLight/" + currentUser.username)
-        label(class="switch")
-          input(type="checkbox" id="themeButton" checked)
-          span(class="slider round")
+        img(src='/getimage/' + user.username alt="missing image of " + user.username)
+      div(id="tabs-container")
+        div(id="tabs-bar")
+          button(id="followersBtn" class="tablink tabButton-active") Followers 
+          button(id="followingBtn" class="tablink") Following
 
-    img(src='/getimage/' + user.username alt="missing image of " + user.username)
-    .tab
-        button.tablinks(onclick="followTabs(event, 'Followers')") Followers
-        button.tablinks(onclick="followTabs(event, 'Following')") Following
-          #Followers.tabcontent
-            h3 Followers
-            p Ost
-          #Following.tabcontent
-            h3 Following
-            p Even bigger ost
-    script
+        div(id="followers" class="tab-content")
+          h2 followers
+        div(id="following" class="tab-content" style="display: none")
+          h2 following 
+      script
         include ../public/javascripts/script.js

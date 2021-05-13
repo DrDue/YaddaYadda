@@ -1,14 +1,21 @@
 /* Clickable tabs */
-function followTabs(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+function tabFunc(evt, tag) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("tab-content");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" tabButton-active", "");
     }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
+    document.getElementById(tag).style.display = "block";
+    evt.currentTarget.className += " tabButton-active";
+  }
+
+    document.getElementById("followersBtn").addEventListener('click', function() {
+      tabFunc(event, 'followers')
+    });
+    document.getElementById("followingBtn").addEventListener('click', function() {
+        tabFunc(event, 'following')
+        });  
