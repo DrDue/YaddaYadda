@@ -203,6 +203,30 @@ body main #profile #tabs-container #tabs-bar .tabButton-active {
 body main #profile #tabs-container .tab-content {
   border: 1px solid black;
 }
+body main #createUser h2 {
+  margin-bottom: 15px;
+}
+body main #createUser form {
+  display: flex;
+  flex-direction: column;
+}
+body main #createUser form input {
+  margin-bottom: 15px;
+}
+body main #login form {
+  display: flex;
+  flex-direction: column;
+}
+body main #login form input {
+  margin-bottom: 15px;
+}
+body main #login div {
+  display: flex;
+  flex-direction: row;
+}
+body main #login div p {
+  margin-right: 5px;
+}
 body ul {
   padding: 0;
 }
