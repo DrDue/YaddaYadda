@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dato = require('../date');
+const dato = require('../../public/javascripts/date');
 
 const yaddasSchema = mongoose.Schema({
     username: {
@@ -16,7 +16,8 @@ const yaddasSchema = mongoose.Schema({
     },
     created: {
         type: String,
-        default: `${dato.formatedTime()} | ${dato.formatedDate()}`
+        //default: `{dato$.formatedTime()} | ${dato.formatedDate()}`
+        default: Date.now
     },
     replyTo: {
         type: mongoose.Schema.Types.ObjectId,

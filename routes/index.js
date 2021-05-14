@@ -143,6 +143,8 @@ router.get("/changedark/:id", async function (req, res) {
   res.redirect("/profiles/" + req.session.username);  
 });
 
+
 router.get('/getimage/:userid', account.lookupImage);
+router.get('/dummyImage', account.dummyImage);
 
 module.exports = router;

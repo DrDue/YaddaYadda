@@ -8,6 +8,7 @@ block content
       input(type="text" name="yadda" placeholder=`${currentUser.username}'s besked`)
       button yadda!
   div(id="timeline")
+    - var i = 0
     each yadda in yaddas
       if !yadda.replyTo
         div(id="yadda")
@@ -16,7 +17,9 @@ block content
           div(id="yaddaText")
             div(id="username")
               a(href="/profiles/" + yadda.username) #{yadda.username}
-              p #{yadda.created}
+              - var mid = "d" + (i++)
+              p(id=mid) 
+              script fullDate(#{yadda.created}, "#{mid}")     
             p #{yadda.yadda}
             button
               a(href="/replyYadda/" + yadda._id) Reply
