@@ -3,6 +3,7 @@ var router = express.Router();
 const account = require("../models/accounts/handlerAccounts");
 const yadda = require("../models/yaddas/handlerYaddas");
 const Yadda = require("../models/yaddas/yaddas");
+const followers = require("../models/followers/followers");
 
 /* GET home page. */
 
@@ -117,6 +118,8 @@ router.get("/profiles/:username", async function (req, res) {
     let user = await account.getAccount(check);
     let check2 = {username: req.session.username};
     let currentUser = await account.getAccount(check2);
+    let check3 = {};
+    let follow = await followers.getFollowers(check3);
     console.log(check);
     let currentTheme = currentUser[0].theme;
     let theme = req.session.theme;
@@ -128,7 +131,8 @@ router.get("/profiles/:username", async function (req, res) {
       user: user[0],
       currentUser: currentUser[0],
       theme: theme,
-      currentTheme: currentTheme
+      currentTheme: currentTheme,
+      followers: follow
     })
   }
 });

@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  p #{followers.followers}
   if user.username === currentUser.username
     div(id="profile")
       div(id="info")
