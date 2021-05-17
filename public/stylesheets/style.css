@@ -98,13 +98,15 @@ body main #post form button:hover {
 body main #post form button a {
   color: white;
 }
-body main #timeline #yadda {
+body main #timeline #yadda,
+body main #oneYadda #yadda {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 20px;
 }
-body main #timeline #yadda img {
+body main #timeline #yadda img,
+body main #oneYadda #yadda img {
   border: 1px solid #6200ee;
   width: 100px;
   height: 100px;
@@ -117,25 +119,30 @@ body main #timeline #yadda img {
   align-items: center;
   color: #6200ee;
 }
-body main #timeline #yadda #yaddaText #username {
+body main #timeline #yadda #yaddaText #username,
+body main #oneYadda #yadda #yaddaText #username {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 300px;
   margin-bottom: 10px;
 }
-body main #timeline #yadda #yaddaText #username a {
+body main #timeline #yadda #yaddaText #username a,
+body main #oneYadda #yadda #yaddaText #username a {
   color: #6200ee;
   margin-right: 10px;
   font-weight: 700;
 }
-body main #timeline #yadda #yaddaText #username a:hover {
+body main #timeline #yadda #yaddaText #username a:hover,
+body main #oneYadda #yadda #yaddaText #username a:hover {
   color: #7d22ff;
 }
-body main #timeline #yadda #yaddaText p {
+body main #timeline #yadda #yaddaText p,
+body main #oneYadda #yadda #yaddaText p {
   max-width: 300px;
 }
-body main #timeline #yadda #yaddaText button {
+body main #timeline #yadda #yaddaText button,
+body main #oneYadda #yadda #yaddaText button {
   margin-top: 10px;
   background-color: #6200ee;
   color: white;
@@ -145,13 +152,16 @@ body main #timeline #yadda #yaddaText button {
   font-size: 15px;
   font-weight: 800;
 }
-body main #timeline #yadda #yaddaText button:hover {
+body main #timeline #yadda #yaddaText button:hover,
+body main #oneYadda #yadda #yaddaText button:hover {
   background-color: #7d22ff;
 }
-body main #timeline #yadda #yaddaText button a {
+body main #timeline #yadda #yaddaText button a,
+body main #oneYadda #yadda #yaddaText button a {
   color: white;
 }
-body main #timeline #yadda a {
+body main #timeline #yadda a,
+body main #oneYadda #yadda a {
   text-decoration: none;
 }
 body main #profile #info {

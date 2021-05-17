@@ -1,15 +1,35 @@
 extends layout
 
 block content
-    p #{oneYadda.username} #{oneYadda.yadda}
+    div(id="oneYadda")
+        div(id="yadda")
+            a(href="/profiles/" + oneYadda.username)
+                img(src='/getimage/' + oneYadda.username alt=oneYadda.username + " has no picture")
+            div(id="yaddaText")
+                div(id="username")
+                    a(href="/profiles/" + oneYadda.username) #{oneYadda.username}
+                    - var mid = "d" + (i++)
+                    p(id=mid) 
+                    script fullDate(#{oneYadda.created}, "#{mid}")     
+                p #{oneYadda.yadda}
     div(id="post")
         form(action="/replyYadda/" + oneYadda._id method="post")
-            input(type="text" name="yadda" placeholder="Besked")
+            input(type="text" name="yadda" placeholder="Reply")
             input(type="hidden" name="reply" value=oneYadda._id)
-            button yadda!
+            button Reply
     div(id="timeline")
+        - var i = 0
         each yadda in yaddas
             if `${oneYadda._id}` === `${yadda.replyTo}`
-                p #{yadda.username} #{yadda.yadda}
-                button
-                    a(href="/replyYadda/" + yadda._id) Reply
+                div(id="yadda")
+                    a(href="/profiles/" + yadda.username)
+                        img(src='/getimage/' + yadda.username alt=yadda.username + " has no picture")
+                    div(id="yaddaText")
+                        div(id="username")
+                            a(href="/profiles/" + yadda.username) #{yadda.username}
+                            - var mid = "d" + (i++)
+                            p(id=mid) 
+                            script fullDate(#{yadda.created}, "#{mid}")     
+                        p #{yadda.yadda}
+                        button
+                            a(href="/replyYadda/" + yadda._id) Reply
