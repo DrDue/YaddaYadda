@@ -25,6 +25,8 @@ html
               a(href="/login") Login
           if user || admin
             li
+              a(href="/profiles/" + currentUser.username) Profile
+            li
               a(href="/logout") Logout
       div(id="middle")
         block content
