@@ -142,6 +142,11 @@ router.get("/profiles/:username", async function (req, res) {
   }
 });
 
+router.get("/unfollow/:id", async function (req, res, next) {
+  followers.unfollow({id: req.params.id});
+  res.redirect("/profiles/" + req.session.username);
+});
+
 router.get("/changelight/:id", async function (req, res) {
   let result = await account.changeLight({username: req.params.id}, {});
   res.redirect("/profiles/" + req.session.username);  

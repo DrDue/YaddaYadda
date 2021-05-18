@@ -38,12 +38,14 @@ block content
         div(id="followers" class="tab-content")
           h2 followers
           each follower in followers
+            p id: #{follower._id}
             p #{follower.following}
         div(id="following" class="tab-content" style="display: none")
           h2 following
           each follower in following
+            p id: #{follower._id}
             p #{follower.followers}
-            a(href="http://")
+            a(href="/unfollow/" + follower._id)
              button Unfollow 
       script
         include ../public/javascripts/script.js
