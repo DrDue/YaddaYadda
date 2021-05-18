@@ -1,7 +1,6 @@
 extends layout
 
 block content
-  p #{followers.followers}
   if user.username === currentUser.username
     div(id="profile")
       div(id="info")
@@ -38,7 +37,13 @@ block content
 
         div(id="followers" class="tab-content")
           h2 followers
+          each follower in followers
+            p #{follower.following}
         div(id="following" class="tab-content" style="display: none")
-          h2 following 
+          h2 following
+          each follower in following
+            p #{follower.followers}
+            a(href="http://")
+             button Unfollow 
       script
         include ../public/javascripts/script.js

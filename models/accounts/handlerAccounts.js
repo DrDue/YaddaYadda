@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const formidable = require("formidable"); // required for image upload
 const fs = require("fs"); // required for reading temp image file
 const config = require("../../config/config");
+const httpStatus = require('http-status-codes');
 let jwt = require("jsonwebtoken");
 //const nodemailer = require('../../config/nodemailer');
 //const { query } = require('express');
@@ -123,6 +124,7 @@ module.exports = {
       req.session.rights = u[0].rights; // set session vars
       req.session.username = u[0].username;
       req.session.theme = u[0].theme;
+      req.session._id = u[0]._id;
       if (req.session.rights === "admin") {
         admin = true;
       }
@@ -190,7 +192,7 @@ module.exports = {
 
   // Til Niels
   dummyImage: async function (req, res) {
-    let path = "/public/images/defaultUser.jpg";
+    let path = "public/images/defaultUser.jpg";
     let content = "image/jpeg";
     await fs.readFile(path, function (err, data) {
       // awaits async read
