@@ -98,6 +98,7 @@ router.get("/replyYadda/:yadda", async function (req, res) {
       title: "Reply",
       oneYadda: oneYadda[0],
       yaddas: result,
+      currentUser: currentUser[0],
       currentTheme: currentTheme
     })
   }
@@ -119,7 +120,7 @@ router.get("/profiles/:username", async function (req, res) {
     let user = await account.getAccount(check);
     let check2 = {username: req.session.username};
     let currentUser = await account.getAccount(check2);
-    let check3 = {followers: req.session.username};
+    let check3 = {follower: req.session.username};
     let follow = await followers.getFollowers(check3);
     console.log("follow log: " + follow + " check: " + check3);
     let check4 = {following: req.session.username};
@@ -143,9 +144,15 @@ router.get("/profiles/:username", async function (req, res) {
 });
 
 router.get("/unfollow/:id", async function (req, res, next) {
-  followers.unfollow({id: req.params.id});
+  followers.unfollow(req.params.id);
   res.redirect("/profiles/" + req.session.username);
 });
+
+router.get("/follow/:user", async function (req, res, next) {
+  let result = await followers.follow(req, req.params.user);
+  res.redirect("/profiles/" + req.session.username);
+});
+
 
 router.get("/changelight/:id", async function (req, res) {
   let result = await account.changeLight({username: req.params.id}, {});

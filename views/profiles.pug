@@ -34,18 +34,18 @@ block content
         div(id="tabs-bar")
           button(id="followersBtn" class="tablink tabButton-active") Followers 
           button(id="followingBtn" class="tablink") Following
+        div(id="follow")
+          div(id="followers" class="tab-content")
 
-        div(id="followers" class="tab-content")
-          h2 followers
-          each follower in followers
-            p id: #{follower._id}
-            p #{follower.following}
-        div(id="following" class="tab-content" style="display: none")
-          h2 following
-          each follower in following
-            p id: #{follower._id}
-            p #{follower.followers}
-            a(href="/unfollow/" + follower._id)
-             button Unfollow 
-      script
-        include ../public/javascripts/script.js
+            each follower in following
+              div(class="tab-inner")
+                p #{follower.follower}
+          div(id="following" class="tab-content")
+
+            each follower in followers
+              div(class="tab-inner")
+                p #{follower.following}
+                a(href="/unfollow/" + follower._id) Unfollow
+                   
+      //- script
+      //-   include ../public/javascripts/script.js

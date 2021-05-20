@@ -8,7 +8,7 @@
   font-weight: 800;
 }
 .buttons:hover {
-  background-color: #7d22ff;
+  background-color: #8c3cff;
 }
 .buttons a {
   color: white;
@@ -27,13 +27,13 @@
   font-weight: 800;
 }
 #submit:hover {
-  background-color: #7d22ff;
+  background-color: #8c3cff;
 }
 #submit a {
   color: white;
 }
 body {
-  background-color: white;
+  background-color: #fff;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /* Rounded sliders */
 }
@@ -46,6 +46,10 @@ body header {
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+}
+body header a {
+  color: white;
+  text-decoration: none;
 }
 body main {
   margin: 0 auto;
@@ -93,7 +97,7 @@ body main #post form button {
   border-radius: 0px 7px 7px 0px;
 }
 body main #post form button:hover {
-  background-color: #7d22ff;
+  background-color: #8c3cff;
 }
 body main #post form button a {
   color: white;
@@ -135,7 +139,7 @@ body main #oneYadda #yadda #yaddaText #username a {
 }
 body main #timeline #yadda #yaddaText #username a:hover,
 body main #oneYadda #yadda #yaddaText #username a:hover {
-  color: #7d22ff;
+  color: #8c3cff;
 }
 body main #timeline #yadda #yaddaText p,
 body main #oneYadda #yadda #yaddaText p {
@@ -154,7 +158,7 @@ body main #oneYadda #yadda #yaddaText button {
 }
 body main #timeline #yadda #yaddaText button:hover,
 body main #oneYadda #yadda #yaddaText button:hover {
-  background-color: #7d22ff;
+  background-color: #8c3cff;
 }
 body main #timeline #yadda #yaddaText button a,
 body main #oneYadda #yadda #yaddaText button a {
@@ -190,28 +194,51 @@ body main #profile #info img {
   height: 200px;
   width: 200px;
 }
+body main #profile #tabs-container #tabs-bar {
+  border: 1px solid black;
+  border-radius: 10px 10px 0 0;
+}
 body main #profile #tabs-container #tabs-bar .tablink {
   width: 50%;
   height: 40px;
   border: none;
-  border-top: 1px solid black;
+  color: white;
   font-size: 24px;
   font-weight: 500;
+  background-color: #6200ee;
 }
 body main #profile #tabs-container #tabs-bar .tablink:first-child {
   border-radius: 10px 0 0 0;
-  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 body main #profile #tabs-container #tabs-bar .tablink:nth-child(2) {
   border-radius: 0 10px 0 0;
-  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
-body main #profile #tabs-container #tabs-bar .tabButton-active {
-  background-color: #6200ee;
-  color: white;
+body main #profile #tabs-container #follow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 body main #profile #tabs-container .tab-content {
   border: 1px solid black;
+  width: 50%;
+}
+body main #profile #tabs-container .tab-content .tab-inner {
+  padding: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+  border-bottom: 2px solid #9b55ff;
+}
+body main #profile #tabs-container .tab-content .tab-inner a {
+  text-decoration: none;
+  color: #6200ee;
+}
+body main #profile #tabs-container .tab-content .tab-inner a:hover {
+  color: #8c3cff;
 }
 body main #createUser h2 {
   margin-bottom: 15px;
@@ -246,6 +273,9 @@ body ul li {
 body ul li a {
   color: #6200ee;
   text-decoration: none;
+}
+body ul li a:hover {
+  color: #8c3cff;
 }
 body .switch {
   position: relative;

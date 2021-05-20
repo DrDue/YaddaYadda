@@ -1,12 +1,14 @@
 //variables
 @primary-color: #6200ee;
-@background-color: white;
-@primary-hover: lighten(@primary-color, 10%);
+@background-color: #fff;
+@white: white;
+@black: black;
+@primary-hover: lighten(@primary-color, 15%);
 
 //mixins
 .buttons {
   background-color: @primary-color;
-  color: white;
+  color: @white;
   padding: 5px 10px;
   border-radius: 15px;
   border: none;
@@ -18,7 +20,7 @@
   }
 
   a {
-    color: white;
+    color: @white;
   }
 }
 
@@ -39,11 +41,16 @@ body {
     width: 100vw;
     height: 50px;
     background-color: @primary-color;
-    color: white;
+    color: @white;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+
+    a {
+      color: @white;
+      text-decoration: none;
+    }
   }
 
   main {
@@ -92,7 +99,8 @@ body {
 
     }
 
-    #timeline, #oneYadda {
+    #timeline,
+    #oneYadda {
       #yadda {
         display: flex;
         flex-direction: row;
@@ -195,62 +203,93 @@ body {
 
       #tabs-container {
         #tabs-bar {
+          border: 1px solid @black;
+          border-radius: 10px 10px 0 0;
 
           .tablink {
             width: 50%;
             height: 40px;
             border: none;
-            border-top: 1px solid black;
+            color: @white;
             font-size: 24px;
             font-weight: 500;
+            background-color: @primary-color;
 
             &:first-child {
               border-radius: 10px 0 0 0;
-              border-left: 1px solid black;
+              border-right: 1px solid @black;
             }
 
             &:nth-child(2) {
               border-radius: 0 10px 0 0;
-              border-right: 1px solid black;
+              border-left: 1px solid @black;
             }
           }
+        }
 
-          .tabButton-active {
-            background-color: @primary-color;
-            color: white;
-          }
+        #follow {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
         }
 
         .tab-content {
-          border: 1px solid black;
+          border: 1px solid @black;
+          width: 50%;
+          
+
+          .tab-inner {
+            padding: 10px;
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            width: 100%;
+            border-bottom: 2px solid lighten(@primary-color, 20%);
+
+            a {
+              text-decoration: none;
+              color: @primary-color;
+
+              &:hover {
+                color: @primary-hover;
+              }
+            }
+          }
         }
       }
     }
+
     #createUser {
-      h2{
+      h2 {
         margin-bottom: 15px;
       }
-      form{
+
+      form {
         display: flex;
         flex-direction: column;
-        input{
+
+        input {
           margin-bottom: 15px;
         }
       }
     }
 
-    #login{
-      form{
+    #login {
+      form {
         display: flex;
         flex-direction: column;
-          input{
-            margin-bottom: 15px;
+
+        input {
+          margin-bottom: 15px;
         }
       }
-      div{
+
+      div {
         display: flex;
         flex-direction: row;
-        p{
+
+        p {
           margin-right: 5px;
         }
       }
@@ -266,6 +305,10 @@ body {
       a {
         color: @primary-color;
         text-decoration: none;
+
+        &:hover {
+          color: @primary-hover;
+        }
       }
     }
   }
@@ -302,7 +345,7 @@ body {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: @white;
     -webkit-transition: .4s;
     transition: .4s;
   }
