@@ -120,10 +120,10 @@ router.get("/profiles/:username", async function (req, res) {
     let user = await account.getAccount(check);
     let check2 = {username: req.session.username};
     let currentUser = await account.getAccount(check2);
-    let check3 = {follower: req.session.username};
+    let check3 = {follower: req.params.username};
     let follow = await followers.getFollowers(check3);
     console.log("follow log: " + follow + " check: " + check3);
-    let check4 = {following: req.session.username};
+    let check4 = {following: req.params.username};
     let following = await followers.getFollowers(check4);
     console.log(check);
     let currentTheme = currentUser[0].theme;

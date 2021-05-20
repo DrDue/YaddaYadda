@@ -1,24 +1,20 @@
 extends layout
 
 block content
-  if user.username === currentUser.username
-    div(id="profile")
-      div(id="info")
-        div(id="user")
-          p Username: 
-          p #{currentUser.username}
-          p First Name:
-          p #{currentUser.firstname}
-          p Last Name:
-          p #{currentUser.lastname}
+  div(id="profile")
+    div(id="info")
+      div(id="user")
+        p Username: 
+        p #{user.username}
+        p First Name:
+        p #{user.firstname}
+        p Last Name:
+        p #{user.lastname}
+        if user.username === currentUser.username
           p Email:
           p #{currentUser.email}
           div(id="theme")
             p Enable dark mode:
-            //- if user.theme === "dark"
-            //-   a(href="/changelight/" + currentUser.username) click here
-            //- else
-            //-   a(href="/changedark/" + currentUser.username) click here
             label(class="switch")
               if user.theme === "light"
                 a(href="/changeDark/" + currentUser.username)
@@ -29,23 +25,32 @@ block content
                   input(type="checkbox" id="themeButton" checked)
                   span(class="slider round")
 
-        img(src='/getimage/' + user.username alt="missing image of " + user.username)
-      div(id="tabs-container")
-        div(id="tabs-bar")
-          button(id="followersBtn" class="tablink tabButton-active") Followers 
-          button(id="followingBtn" class="tablink") Following
-        div(id="follow")
-          div(id="followers" class="tab-content")
+      img(src='/getimage/' + user.username alt="missing image of " + user.username)
+    div(id="tabs-container")
+      div(id="tabs-bar")
+        button(id="followersBtn" class="tablink tabButton-active") Followers 
+        button(id="followingBtn" class="tablink") Following
+      div(id="follow")
+        div(id="followers" class="tab-content")
 
-            each follower in following
-              div(class="tab-inner")
-                p #{follower.follower}
-          div(id="following" class="tab-content")
+          each follower in following
+            div(class="tab-inner")
+              div(class="followUser")
+                a(href="/profiles/" + follower.follower)
+                  img(src='/getimage/' + follower.follower alt="missing image of " + user.username)
+                a(href="/profiles/" + follower.follower)
+                  h3 #{follower.follower}
+        div(id="following" class="tab-content")
 
-            each follower in followers
-              div(class="tab-inner")
-                p #{follower.following}
+          each follower in followers
+            div(class="tab-inner")
+              div(class="followUser")
+                a(href="/profiles/" + follower.following) 
+                  img(src='/getimage/' + follower.following alt="missing image of " + user.username)
+                a(href="/profiles/" + follower.following)
+                  h3 #{follower.following}
+              if user.username === currentUser.username
                 a(href="/unfollow/" + follower._id) Unfollow
-                   
+                  
       //- script
       //-   include ../public/javascripts/script.js

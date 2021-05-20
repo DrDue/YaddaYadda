@@ -198,6 +198,8 @@ body {
           border-radius: 50%;
           height: 200px;
           width: 200px;
+          object-fit: cover;
+          border: 1px solid @primary-color;
         }
       }
 
@@ -240,12 +242,41 @@ body {
 
           .tab-inner {
             padding: 10px;
-            padding-bottom: 5px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            align-items: center;
+            margin-bottom: 5px;
             width: 100%;
-            border-bottom: 2px solid lighten(@primary-color, 20%);
+            border-bottom: 2px solid lighten(@primary-color, 40%);
+
+            &:last-child {
+              margin-bottom: 5px;
+              border-bottom: none;
+            }
+
+            .followUser {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+
+              a {
+                color: @black;
+
+                &:hover {
+                  color: lighten(@black, 20%)
+                }
+              }
+
+              img {
+                border: 1px solid @primary-color;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 20px;
+                object-fit: cover;
+              }
+            }
 
             a {
               text-decoration: none;

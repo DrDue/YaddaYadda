@@ -193,6 +193,8 @@ body main #profile #info img {
   border-radius: 50%;
   height: 200px;
   width: 200px;
+  object-fit: cover;
+  border: 1px solid #6200ee;
 }
 body main #profile #tabs-container #tabs-bar {
   border: 1px solid black;
@@ -226,12 +228,36 @@ body main #profile #tabs-container .tab-content {
 }
 body main #profile #tabs-container .tab-content .tab-inner {
   padding: 10px;
-  padding-bottom: 5px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 5px;
   width: 100%;
-  border-bottom: 2px solid #9b55ff;
+  border-bottom: 2px solid #d7bbff;
+}
+body main #profile #tabs-container .tab-content .tab-inner:last-child {
+  margin-bottom: 5px;
+  border-bottom: none;
+}
+body main #profile #tabs-container .tab-content .tab-inner .followUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body main #profile #tabs-container .tab-content .tab-inner .followUser a {
+  color: black;
+}
+body main #profile #tabs-container .tab-content .tab-inner .followUser a:hover {
+  color: #333333;
+}
+body main #profile #tabs-container .tab-content .tab-inner .followUser img {
+  border: 1px solid #6200ee;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
 }
 body main #profile #tabs-container .tab-content .tab-inner a {
   text-decoration: none;
