@@ -17,11 +17,14 @@ module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
     transporter.sendMail({
       from: user,
       to: email,
-      subject: "Please confirm your account",
-      html: `<h1>Email Confirmation</h1>
-          <h2>Hello ${name}</h2>
-          <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-          <a href=http://localhost:3000/confirm/${confirmationCode}> Click here</a>
+      subject: "Please confirm your Yadda account",
+      html: `<h4>Hello ${name}.</h4>
+          <p>Thank you for creating a user on our Yadda social media.</p> 
+          <p>Please confirm your email by clicking on the following link to be able to login to your account.</p>
+          <a href=http://localhost:3000/confirm/${confirmationCode}> Confirm your email adress</a>
+          <br>
+          <p>Best regards</p>
+          <p>Yadda M, C, K</p>
           </div>`,
     }).catch(err => console.log(err));
   };
