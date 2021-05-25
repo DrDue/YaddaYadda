@@ -52,7 +52,7 @@ router.get("/following", async function (req, res, next) {
     let currentTheme = currentUser[0].theme;
     let check3 = {follower: req.session.username};
     let follow = await followers.getFollowers(check3);
-    res.render("index", {
+    res.render("following", {
       title: "Create a new Yadda",
       yaddas: result,
       theme: theme,
