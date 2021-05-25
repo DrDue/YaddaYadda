@@ -19,6 +19,7 @@ module.exports = {
     return result;
   },
 
+  //Functionality to follow and unfollow
   unfollow: async function (chk) {
     const dbname = "yadda"; // databasen hedder yadda
     const findDB = `mongodb://localhost:27017/${dbname}`;
