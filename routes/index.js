@@ -145,6 +145,11 @@ router.get("/profiles/:username", async function (req, res) {
   }
 });
 
+router.get("/confirm/:token", async function (req, res, next) {
+  account.approveAccount({confirmationCode: req.params.token});
+  res.redirect("/login");
+});
+
 router.get("/unfollow/:id", async function (req, res, next) {
   followers.unfollow(req.params.id);
   res.redirect("/profiles/" + req.session.username);
