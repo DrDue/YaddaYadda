@@ -3,10 +3,10 @@ const Account = require("./accounts");
 const bcrypt = require("bcryptjs");
 const formidable = require("formidable"); // required for image upload
 const fs = require("fs"); // required for reading temp image file
-const config = require("../../config/config");
+const config = require('../../config/config')
 const httpStatus = require('http-status-codes');
 let jwt = require("jsonwebtoken");
-//const nodemailer = require('../../config/nodemailer');
+const nodemailer = require('../../config/nodemailer');
 //const { query } = require('express');
 //const { delete } = require('../../app');
 
@@ -100,11 +100,11 @@ module.exports = {
       }
       await newUser.save();
 
-      // nodemailer.sendConfirmationEmail( //Email verification
-      //     user.username,
-      //     user.email,
-      //     user.confirmationCode
-      // );
+      nodemailer.sendConfirmationEmail(
+          newUser.username,
+          newUser.email,
+          newUser.confirmationCode
+      );
       req.flash("success_msg", "You are now registered and can log in");
       res.redirect("/login");
     });

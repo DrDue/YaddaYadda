@@ -5,6 +5,8 @@ const yadda = require("../models/yaddas/handlerYaddas");
 const Yadda = require("../models/yaddas/yaddas");
 const followers = require("../models/followers/handlerFollowers");
 const Follow = require("../models/followers/followers");
+const config  = require('../config/config');
+//const nodemailer = require('../../config/nodemailer');
 
 /* GET home page. */
 
