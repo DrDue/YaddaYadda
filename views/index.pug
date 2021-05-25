@@ -11,7 +11,6 @@ block content
     - var i = 0
     each yadda in yaddas
       if !yadda.replyTo
-        a(href="/follow/" + yadda.username) FOLLOW
         div(id="yadda")
           a(href="/profiles/" + yadda.username)
             img(src='/getimage/' + yadda.username alt=yadda.username + " has no picture")

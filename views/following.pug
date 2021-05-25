@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div(id="post")
+    a(href="/profiles/" + currentUser.username)
+      img(src='/getimage/' + currentUser.username alt="missing image of " + currentUser.username)
+    form(action="/" method="post")
+      input(type="text" name="yadda" placeholder=`${currentUser.username}'s besked`)
+      button yadda!
+  div(id="timeline")
+    - var i = 0
+    h1 following
+    each yadda in yaddas
+      each follower in followers
+        if follower.following === yadda.username
+          if !yadda.replyTo
+            div(id="yadda")
+              a(href="/profiles/" + yadda.username)
+                img(src='/getimage/' + yadda.username alt=yadda.username + " has no picture")
+              div(id="yaddaText")
+                div(id="username")
+                  a(href="/profiles/" + yadda.username) #{yadda.username}
+                  - var mid = "d" + (i++)
+                  p(id=mid) 
+                  script fullDate(#{yadda.created}, "#{mid}")     
+                p #{yadda.yadda}
+                button
+                  a(href="/replyYadda/" + yadda._id) Reply
+        

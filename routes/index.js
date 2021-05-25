@@ -21,12 +21,15 @@ router.get("/", async function (req, res, next) {
     let check2 = {username: req.session.username};
     let currentUser = await account.getAccount(check2);
     let currentTheme = currentUser[0].theme;
+    let check3 = {follower: req.session.username};
+    let follow = await followers.getFollowers(check3);
     res.render("index", {
       title: "Create a new Yadda",
       yaddas: result,
       theme: theme,
       currentUser: currentUser[0],
-      currentTheme: currentTheme
+      currentTheme: currentTheme,
+      followers: follow
     });
   }
 });
@@ -34,6 +37,35 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
   let result = await yadda.createYaddas(req);
   res.redirect("/");
+});
+
+router.get("/following", async function (req, res, next) {
+  if (!req.session.authenticated) {
+    res.redirect("/login");
+  } else {
+    let check = {};                                   // var der i forvejen
+    let sort = {sort: {created: -1}}           // ny
+    let result = await yadda.getYaddas(check, sort); // skal bruge check og sort
+    let theme = req.session.theme;
+    let check2 = {username: req.session.username};
+    let currentUser = await account.getAccount(check2);
+    let currentTheme = currentUser[0].theme;
+    let check3 = {follower: req.session.username};
+    let follow = await followers.getFollowers(check3);
+    res.render("index", {
+      title: "Create a new Yadda",
+      yaddas: result,
+      theme: theme,
+      currentUser: currentUser[0],
+      currentTheme: currentTheme,
+      followers: follow
+    });
+  }
+});
+
+router.post("/following", async function (req, res, next) {
+  let result = await yadda.createYaddas(req);
+  res.redirect("/following");
 });
 
 router.get("/createUser", function (req, res, next) {
@@ -127,12 +159,9 @@ router.get("/profiles/:username", async function (req, res) {
     console.log("follow log: " + follow + " check: " + check3);
     let check4 = {following: req.params.username};
     let following = await followers.getFollowers(check4);
-    console.log(check);
+    console.log("following: " + follow);
     let currentTheme = currentUser[0].theme;
     let theme = req.session.theme;
-    console.log(req.session.username);
-    console.log("session theme: " + req.session.theme);
-    console.log("theme: " + currentTheme);
     res.render("profiles", {
       title: "Profile",
       user: user[0],
