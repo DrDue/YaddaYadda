@@ -6,9 +6,9 @@ html
       if currentTheme === "dark"
         link(rel='stylesheet', href='/stylesheets/styleDark.css')
       else
-        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/styleLight.css')
     else
-        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/styleLight.css')
     script(src="/javascripts/date.js") 
   body
     header
@@ -36,4 +36,7 @@ html
       
       block sidebar
         div(id="annoncer")
-          p annoncer
+          a(href="#")
+            img(src="../images/singler.jpg", alt="queen")
+          a(href="#")
+            img(src="../images/marmite.jpg", alt="queen")  

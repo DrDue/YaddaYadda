@@ -1,5 +1,5 @@
 .buttons {
-  background-color: #00b4a2;
+  background-color: #6200ee;
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
@@ -8,7 +8,7 @@
   font-weight: 800;
 }
 .buttons:hover {
-  background-color: #01ffe6;
+  background-color: #8c3cff;
 }
 .buttons a {
   color: white;
@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 #submit {
-  background-color: #00b4a2;
+  background-color: #6200ee;
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
@@ -27,23 +27,20 @@
   font-weight: 800;
 }
 #submit:hover {
-  background-color: #01ffe6;
+  background-color: #8c3cff;
 }
 #submit a {
   color: white;
 }
 body {
-  background-color: #121212;
+  background-color: #fff;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /* Rounded sliders */
-}
-body p {
-  color: white;
 }
 body header {
   width: 100vw;
   height: 50px;
-  background-color: #00b4a2;
+  background-color: #6200ee;
   color: white;
   display: flex;
   justify-content: center;
@@ -85,7 +82,7 @@ body main #post img {
   width: 60px;
   margin-right: 20px;
   border-radius: 50%;
-  border: 2px solid #00b4a2;
+  border: 2px solid #6200ee;
 }
 body main #post form {
   width: 100%;
@@ -102,7 +99,7 @@ body main #post form input[type="text"] {
   padding-left: 10px;
 }
 body main #post form button {
-  background-color: #00b4a2;
+  background-color: #6200ee;
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
@@ -112,7 +109,7 @@ body main #post form button {
   border-radius: 0px 7px 7px 0px;
 }
 body main #post form button:hover {
-  background-color: #01ffe6;
+  background-color: #8c3cff;
 }
 body main #post form button a {
   color: white;
@@ -126,7 +123,7 @@ body main #oneYadda #yadda {
 }
 body main #timeline #yadda img,
 body main #oneYadda #yadda img {
-  border: 1px solid #00b4a2;
+  border: 1px solid #6200ee;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -136,7 +133,7 @@ body main #oneYadda #yadda img {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #00b4a2;
+  color: #6200ee;
 }
 body main #timeline #yadda #yaddaText #username,
 body main #oneYadda #yadda #yaddaText #username {
@@ -148,13 +145,13 @@ body main #oneYadda #yadda #yaddaText #username {
 }
 body main #timeline #yadda #yaddaText #username a,
 body main #oneYadda #yadda #yaddaText #username a {
-  color: #00b4a2;
+  color: #6200ee;
   margin-right: 10px;
   font-weight: 700;
 }
 body main #timeline #yadda #yaddaText #username a:hover,
 body main #oneYadda #yadda #yaddaText #username a:hover {
-  color: #01ffe6;
+  color: #8c3cff;
 }
 body main #timeline #yadda #yaddaText p,
 body main #oneYadda #yadda #yaddaText p {
@@ -163,7 +160,7 @@ body main #oneYadda #yadda #yaddaText p {
 body main #timeline #yadda #yaddaText button,
 body main #oneYadda #yadda #yaddaText button {
   margin-top: 10px;
-  background-color: #00b4a2;
+  background-color: #6200ee;
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
@@ -173,7 +170,7 @@ body main #oneYadda #yadda #yaddaText button {
 }
 body main #timeline #yadda #yaddaText button:hover,
 body main #oneYadda #yadda #yaddaText button:hover {
-  background-color: #01ffe6;
+  background-color: #8c3cff;
 }
 body main #timeline #yadda #yaddaText button a,
 body main #oneYadda #yadda #yaddaText button a {
@@ -194,7 +191,7 @@ body main #profile #info #user p {
 }
 body main #profile #info #user p:nth-child(odd) {
   font-weight: 600;
-  color: #00b4a2;
+  color: #6200ee;
 }
 body main #profile #info #user p:nth-child(even) {
   margin-bottom: 10px;
@@ -204,7 +201,7 @@ body main #profile #info #user #theme .switch a {
   display: block;
 }
 body main #profile #info #user button {
-  background-color: #00b4a2;
+  background-color: #6200ee;
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
@@ -213,7 +210,7 @@ body main #profile #info #user button {
   font-weight: 800;
 }
 body main #profile #info #user button:hover {
-  background-color: #01ffe6;
+  background-color: #8c3cff;
 }
 body main #profile #info #user button a {
   color: white;
@@ -223,10 +220,10 @@ body main #profile #info img {
   height: 200px;
   width: 200px;
   object-fit: cover;
-  border: 1px solid #00b4a2;
+  border: 1px solid #6200ee;
 }
 body main #profile #tabs-container #tabs-bar {
-  border: 1px solid #00b4a2;
+  border: 1px solid black;
   border-radius: 10px 10px 0 0;
 }
 body main #profile #tabs-container #tabs-bar .tablink {
@@ -236,15 +233,15 @@ body main #profile #tabs-container #tabs-bar .tablink {
   color: white;
   font-size: 24px;
   font-weight: 500;
-  background-color: #00b4a2;
+  background-color: #6200ee;
 }
 body main #profile #tabs-container #tabs-bar .tablink:first-child {
   border-radius: 10px 0 0 0;
-  border-right: 1px solid #00b4a2;
+  border-right: 1px solid black;
 }
 body main #profile #tabs-container #tabs-bar .tablink:nth-child(2) {
   border-radius: 0 10px 0 0;
-  border-left: 1px solid #00b4a2;
+  border-left: 1px solid black;
 }
 body main #profile #tabs-container #follow {
   display: flex;
@@ -252,7 +249,7 @@ body main #profile #tabs-container #follow {
   width: 100%;
 }
 body main #profile #tabs-container .tab-content {
-  border: 1px solid #00b4a2;
+  border: 1px solid black;
   width: 50%;
 }
 body main #profile #tabs-container .tab-content .tab-inner {
@@ -262,7 +259,7 @@ body main #profile #tabs-container .tab-content .tab-inner {
   align-items: center;
   margin-bottom: 5px;
   width: 100%;
-  border-bottom: 2px solid #81fff2;
+  border-bottom: 2px solid #d7bbff;
 }
 body main #profile #tabs-container .tab-content .tab-inner:last-child {
   margin-bottom: 5px;
@@ -275,13 +272,13 @@ body main #profile #tabs-container .tab-content .tab-inner .followUser {
   align-items: center;
 }
 body main #profile #tabs-container .tab-content .tab-inner .followUser a {
-  color: white;
+  color: black;
 }
 body main #profile #tabs-container .tab-content .tab-inner .followUser a:hover {
-  color: #ffffff;
+  color: #333333;
 }
 body main #profile #tabs-container .tab-content .tab-inner .followUser img {
-  border: 1px solid #00b4a2;
+  border: 1px solid #6200ee;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -290,10 +287,10 @@ body main #profile #tabs-container .tab-content .tab-inner .followUser img {
 }
 body main #profile #tabs-container .tab-content .tab-inner a {
   text-decoration: none;
-  color: #00b4a2;
+  color: #6200ee;
 }
 body main #profile #tabs-container .tab-content .tab-inner a:hover {
-  color: #01ffe6;
+  color: #8c3cff;
 }
 body main #createUser h2 {
   margin-bottom: 15px;
@@ -341,11 +338,11 @@ body ul li {
   list-style: none;
 }
 body ul li a {
-  color: #00b4a2;
+  color: #6200ee;
   text-decoration: none;
 }
 body ul li a:hover {
-  color: #01ffe6;
+  color: #8c3cff;
 }
 body .switch {
   position: relative;
@@ -381,7 +378,7 @@ body .slider:before {
   transition: 0.4s;
 }
 body input:checked + .slider {
-  background-color: #00b4a2;
+  background-color: #6200ee;
 }
 body input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;

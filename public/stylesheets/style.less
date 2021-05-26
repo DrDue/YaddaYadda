@@ -1,6 +1,6 @@
 //variables
-@primary-color: #6200ee;
-@background-color: #fff;
+@primary-color: #00b4a2;
+@background-color: #121212;
 @white: white;
 @black: black;
 @primary-hover: lighten(@primary-color, 15%);
@@ -37,6 +37,10 @@ body {
   background-color: @background-color;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
+  p {
+    color: @white;
+  }
+
   header {
     width: 100vw;
     height: 50px;
@@ -59,6 +63,24 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    #menu {
+      ul {
+        li{
+          margin-bottom: 20px;
+
+          a {
+            font-size: 24px;
+            font-weight: 600;
+
+          }
+        }
+      }
+    }
+
+    #middle, #menu, #annoncer {
+      width: 33%;
+    }
 
     #post {
       width: 100%;
@@ -160,7 +182,6 @@ body {
     #profile {
 
       #info {
-        width: 500px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -192,6 +213,9 @@ body {
             }
 
           }
+          button {
+            .buttons();
+          }
         }
 
         img {
@@ -205,7 +229,7 @@ body {
 
       #tabs-container {
         #tabs-bar {
-          border: 1px solid @black;
+          border: 1px solid @primary-color;
           border-radius: 10px 10px 0 0;
 
           .tablink {
@@ -219,12 +243,12 @@ body {
 
             &:first-child {
               border-radius: 10px 0 0 0;
-              border-right: 1px solid @black;
+              border-right: 1px solid @primary-color;
             }
 
             &:nth-child(2) {
               border-radius: 0 10px 0 0;
-              border-left: 1px solid @black;
+              border-left: 1px solid @primary-color;
             }
           }
         }
@@ -236,7 +260,7 @@ body {
         }
 
         .tab-content {
-          border: 1px solid @black;
+          border: 1px solid @primary-color;
           width: 50%;
           
 
@@ -261,10 +285,10 @@ body {
               align-items: center;
 
               a {
-                color: @black;
+                color: @white;
 
                 &:hover {
-                  color: lighten(@black, 20%)
+                  color: lighten(@white, 20%)
                 }
               }
 
@@ -324,6 +348,23 @@ body {
           margin-right: 5px;
         }
       }
+    }
+
+    #annoncer {
+      //width: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      a {
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 50px;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
     }
   }
 

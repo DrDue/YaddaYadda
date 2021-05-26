@@ -25,7 +25,8 @@ block content
                   input(type="checkbox" id="themeButton" checked)
                   span(class="slider round")
         if user.username !== currentUser.username          
-          a(href="/follow/" + user.username) Follow
+          a(href="/follow/" + user.username)
+            button Follow
       img(src='/getimage/' + user.username alt="missing image of " + user.username)
     div(id="tabs-container")
       div(id="tabs-bar")
