@@ -21,7 +21,7 @@ module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
       html: `<h4>Hello ${name}.</h4>
           <p>Thank you for creating a user on our Yadda social media.</p> 
           <p>Please confirm your email by clicking on the following link to be able to login to your account.</p>
-          <a href=http://localhost:3000/confirm/${confirmationCode}> Confirm your email adress</a>
+          <a href=http://localhost:3000/confirm/${confirmationCode}> Confirm your email address</a>
           <br>
           <p>Best regards</p>
           <p>Yadda M, C, K</p>
